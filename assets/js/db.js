@@ -5,9 +5,9 @@
  */
 
 const STORAGE_KEYS = {
-  PRODUCTS: 'ppr_products_data_v1',
-  SPECIALS: 'ppr_specials_data_v1',
-  STORE_INFO: 'ppr_store_info_v1',
+  PRODUCTS: 'ppr_products_data_v2',
+  SPECIALS: 'ppr_specials_data_v2',
+  STORE_INFO: 'ppr_store_info_v2',
   INQUIRIES: 'ppr_inquiries_data_v1',
   AGE_VERIFIED: 'ppr_age_verified_v1',
   ADMIN_AUTH: 'ppr_admin_session_v1',
@@ -26,8 +26,14 @@ const DEFAULT_STORE_INFO = {
   phone: "(502) 370-4392",
   phoneRaw: "+15023704392",
   email: "pprliquor@gmail.com",
+  website: "https://www.pprliquor.com",
+  domain: "www.pprliquor.com",
   mapsUrl: "https://maps.google.com/?q=1601+Paris+Pike,+Georgetown,+KY+40324",
-  announcement: "🥃 Welcome to Georgetown's premier bourbon destination! Inquire at (502) 370-4392 for allocated releases & daily specials.",
+  delivery: {
+    doordash: "https://www.doordash.com/convenience/store/ppr-liquor-georgetown-27820743",
+    ubereats: "https://www.ubereats.com/store/ppr-liquor-1601-paris-pike/DQNV6tk_WZOx39NYD3ImRQ"
+  },
+  announcement: "🥃 Welcome to Georgetown's premier bourbon destination! Order local delivery on DoorDash & Uber Eats, or visit us at 1601 Paris Pike.",
   hours: {
     sunday: { label: "Sunday", open: "10:00 AM", close: "10:00 PM", openHour: 10, closeHour: 22 },
     monday: { label: "Monday", open: "9:00 AM", close: "11:00 PM", openHour: 9, closeHour: 23 },
@@ -37,7 +43,7 @@ const DEFAULT_STORE_INFO = {
     friday: { label: "Friday", open: "9:00 AM", close: "12:00 AM", openHour: 9, closeHour: 24 },
     saturday: { label: "Saturday", open: "9:00 AM", close: "12:00 AM", openHour: 9, closeHour: 24 }
   },
-  legalDisclaimer: "PPR LIQUOR is a licensed retail alcohol beverage dealer in Georgetown, Kentucky. You must be at least 21 years of age to purchase alcohol. Please drink responsibly. This website is an informational browse-only catalog with no online ordering or checkout."
+  legalDisclaimer: "PPR LIQUOR is a licensed retail alcohol dealer in Georgetown, Kentucky. You must be at least 21 years of age to purchase alcohol. Please drink responsibly. On-demand delivery is available through our verified third-party partners DoorDash and Uber Eats. This website is an informational browse-only catalog that does not collect or process payments directly."
 };
 
 // Initial Products Data with Authentic Kentucky Bourbons and Curated Spirits
@@ -172,7 +178,6 @@ const DEFAULT_PRODUCTS = [
     id: "prod-fr-10",
     name: "Four Roses Single Barrel Bourbon",
     brand: "Four Roses",
-    category: "Four Roses",
     category: "Kentucky Bourbon",
     size: "750ml",
     proof: "100 Proof (50% ABV)",
@@ -327,7 +332,7 @@ const DEFAULT_PRODUCTS = [
     description: "A rich, jammy Pinot Noir sourced from California's premiere coastal regions (Sonoma, Monterey, and Santa Barbara). Lush and approachable.",
     tastingNotes: ["Boysenberry & Strawberry", "Toasted Mocha", "Silky Vanilla Oak"]
   },
-  // Beer & Local Craft
+  // Beer & Cold Seltzers
   {
     id: "prod-beer-01",
     name: "Kentucky Bourbon Barrel Ale",
@@ -338,7 +343,7 @@ const DEFAULT_PRODUCTS = [
     price: "$14.99",
     status: "In Stock",
     featured: true,
-    image: "assets/images/bourbon-bottle.jpg",
+    image: "assets/images/beer-cans.jpg",
     description: "Award-winning ale aged up to six weeks in freshly decanted bourbon barrels from local Kentucky distilleries. Subtle yet distinct vanilla and oak flavors.",
     tastingNotes: ["Bourbon Barrel Oak", "Vanilla & Caramel", "Smooth Warming Malt"]
   },
@@ -352,9 +357,66 @@ const DEFAULT_PRODUCTS = [
     price: "$19.99",
     status: "In Stock",
     featured: false,
-    image: "assets/images/tequila-bottle.jpg",
-    description: "Made with real vodka, real sparkling juice, and sparkling water. Low calorie, gluten-free, and no added sugar.",
+    image: "assets/images/beer-cans.jpg",
+    description: "Made with real vodka, real fruit juice, and sparkling water. Low calorie, gluten-free, with crisp refreshing flavors perfect for Kentucky outdoor gatherings.",
     tastingNotes: ["Real Black Cherry", "Fresh Pineapple", "Grapefruit & Peach"]
+  },
+  {
+    id: "prod-beer-03",
+    name: "Michelob Ultra Superior Light Beer",
+    brand: "Michelob Ultra",
+    category: "Beer",
+    size: "12-Pack Cans",
+    proof: "4.2% ABV",
+    price: "$15.99",
+    status: "In Stock",
+    featured: false,
+    image: "assets/images/beer-cans.jpg",
+    description: "A superior light beer brewed with Herkules hops and wholesome grains for a crisp, clean taste with only 95 calories and 2.6g carbs. Kept ice-cold in our walk-in cave.",
+    tastingNotes: ["Clean Refreshing Sip", "Subtle Malt", "Ultra Crisp Finish"]
+  },
+  {
+    id: "prod-beer-04",
+    name: "White Claw Hard Seltzer Variety Pack No. 1",
+    brand: "White Claw",
+    category: "Ready-to-Drink/Cocktails",
+    size: "12-Pack Cans",
+    proof: "5.0% ABV",
+    price: "$17.99",
+    status: "In Stock",
+    featured: false,
+    image: "assets/images/beer-cans.jpg",
+    description: "Crafted with pure seltzer water, gluten-free alcohol base, and a hint of natural fruit flavor. Includes Black Cherry, Mango, Natural Lime, and Ruby Grapefruit.",
+    tastingNotes: ["Black Cherry Burst", "Juicy Mango", "Sparkling Citrus"]
+  },
+  // Gin & Additional Curated Spirits
+  {
+    id: "prod-gin-01",
+    name: "Hendrick's Handcrafted Scottish Gin",
+    brand: "Hendrick's",
+    category: "Whiskey & Scotch",
+    size: "750ml",
+    proof: "88 Proof (44% ABV)",
+    price: "$36.99",
+    status: "In Stock",
+    featured: false,
+    image: "assets/images/bourbon-bottle.jpg",
+    description: "Distilled in Scotland in miniscule batches using a unique blend of 11 botanicals infused with Bulgarian Rosa Damascena rose petals and specially selected cucumbers.",
+    tastingNotes: ["Crisp Cucumber", "Fragrant Rose Petal", "Bright Juniper & Coriander"]
+  },
+  {
+    id: "prod-wh-03",
+    name: "Crown Royal Deluxe Blended Canadian Whisky",
+    brand: "Crown Royal",
+    category: "Whiskey & Scotch",
+    size: "750ml",
+    proof: "80 Proof (40% ABV)",
+    price: "$27.99",
+    status: "In Stock",
+    featured: false,
+    image: "assets/images/bourbon-bottle.jpg",
+    description: "The standard of excellence for Canadian whisky. An extraordinary blend of 50 full-bodied whiskies, matured to perfection in white oak barrels.",
+    tastingNotes: ["Rich Vanilla", "Creamy Caramel", "Velvety Oak Finish"]
   }
 ];
 

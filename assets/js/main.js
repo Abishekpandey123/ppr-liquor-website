@@ -207,6 +207,16 @@ function openProductModal(productId) {
     statusEl.style.display = "inline-block";
   }
 
+  const doorDashBtn = document.getElementById('modalDoorDashBtn');
+  if (doorDashBtn) {
+    doorDashBtn.href = "https://www.doordash.com/convenience/store/ppr-liquor-georgetown-27820743";
+  }
+
+  const uberEatsBtn = document.getElementById('modalUberEatsBtn');
+  if (uberEatsBtn) {
+    uberEatsBtn.href = "https://www.ubereats.com/store/ppr-liquor-1601-paris-pike/DQNV6tk_WZOx39NYD3ImRQ";
+  }
+
   if (callBtn) {
     callBtn.href = `tel:+15023704392`;
     callBtn.innerHTML = `📞 Call PPR LIQUOR to Inquire: (502) 370-4392`;
@@ -219,13 +229,13 @@ function openProductModal(productId) {
 }
 
 /* -------------------------------------------------------------------------
-   6. CONTACT FORM SUBMISSION
+   6. CONTACT FORM SUBMISSION (Forwarded to pprliquor@gmail.com & Local DB)
    ------------------------------------------------------------------------- */
 function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     // Check honeypot for anti-spam
@@ -237,8 +247,8 @@ function initContactForm() {
 
     const name = form.querySelector('#contactName')?.value.trim();
     const email = form.querySelector('#contactEmail')?.value.trim();
-    const phone = form.querySelector('#contactPhone')?.value.trim();
-    const subject = form.querySelector('#contactSubject')?.value.trim();
+    const phone = form.querySelector('#contactPhone')?.value.trim() || 'Not provided';
+    const subject = form.querySelector('#contactSubject')?.value.trim() || 'General Inquiry';
     const message = form.querySelector('#contactMessage')?.value.trim();
 
     if (!name || !email || !message) {
@@ -246,18 +256,64 @@ function initContactForm() {
       return;
     }
 
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const origBtnHTML = submitBtn ? submitBtn.innerHTML : 'Send Message';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `⏳ Sending to Store Email...`;
+    }
+
+    // 1. Always record in Admin Portal database
     if (window.pprDB) {
       window.pprDB.addInquiry({
         name,
         email,
-        phone: phone || "Not provided",
-        subject: subject || "General Inquiry",
+        phone,
+        subject,
         message
       });
     }
 
+    // 2. Dispatch email to pprliquor@gmail.com via FormSubmit AJAX service
+    let delivered = false;
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/pprliquor@gmail.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          phone: phone,
+          _subject: `New Customer Inquiry: [${subject}] from ${name}`,
+          subject: subject,
+          message: message,
+          _template: "table"
+        })
+      });
+
+      if (response.ok) {
+        delivered = true;
+      }
+    } catch (err) {
+      console.warn("Direct transmission status:", err);
+    }
+
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = origBtnHTML;
+    }
+
     const successBanner = document.getElementById('contactSuccessBanner');
     if (successBanner) {
+      successBanner.innerHTML = `
+        <strong>✓ Thank you, ${name}!</strong> Your message has been sent to <strong>pprliquor@gmail.com</strong> and logged in our store system. Our team at 1601 Paris Pike will respond shortly.
+        <div style="margin-top: 0.65rem; font-size: 0.88rem; color: #fff;">
+          Need immediate bottle holds or allocation info? Call us directly: <a href="tel:+15023704392" style="color: var(--color-gold-light); text-decoration: underline; font-weight: 700;">(502) 370-4392</a>
+        </div>
+      `;
       successBanner.style.display = 'block';
       successBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
@@ -317,15 +373,24 @@ function renderProductCardHTML(product) {
         <div class="product-tasting-tags">
           ${tagsHTML}
         </div>
+        <div class="product-card-delivery-row">
+          <span class="delivery-badge-label">Delivery:</span>
+          <a href="https://www.doordash.com/convenience/store/ppr-liquor-georgetown-27820743" target="_blank" rel="noopener noreferrer" class="delivery-badge-link doordash" title="Order ${product.name} on DoorDash">
+            DoorDash ↗
+          </a>
+          <a href="https://www.ubereats.com/store/ppr-liquor-1601-paris-pike/DQNV6tk_WZOx39NYD3ImRQ" target="_blank" rel="noopener noreferrer" class="delivery-badge-link ubereats" title="Order ${product.name} on Uber Eats">
+            Uber Eats ↗
+          </a>
+        </div>
         <div class="product-footer-row">
           <div class="product-price-row">
             <span class="product-price">${product.price || 'Call for Price'}</span>
             <span class="price-disclaimer">Prices subject to change</span>
           </div>
-          <a href="tel:+15023704392" class="btn-ask-availability">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.25 1.02l-2.22 2.09z"/></svg>
-            Call to Ask About Availability
-          </a>
+          <button type="button" onclick="openProductModal('${product.id}')" class="btn-ask-availability" style="cursor:pointer; border:none;">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            View Details & Order
+          </button>
         </div>
       </div>
     </article>

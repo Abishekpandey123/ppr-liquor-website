@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* -------------------------------------------------------------------------
-   1. AUTHENTICATION & LOGIN SCREEN
+   1. AUTHENTICATION & LOGIN SCREEN (Hardened Security)
    ------------------------------------------------------------------------- */
 function initAdminAuth() {
   const authWrapper = document.getElementById('adminAuthScreen');
@@ -26,25 +26,72 @@ function initAdminAuth() {
 
   if (!window.pprDB) return;
 
+  // Check session inactivity (30-minute auto timeout)
+  const lastActive = sessionStorage.getItem('ppr_admin_last_activity');
+  const now = Date.now();
+  if (lastActive && (now - parseInt(lastActive, 10)) > 30 * 60 * 1000) {
+    window.pprDB.logout();
+    sessionStorage.removeItem('ppr_admin_last_activity');
+  }
+
   if (window.pprDB.checkAuth()) {
+    sessionStorage.setItem('ppr_admin_last_activity', now.toString());
     if (authWrapper) authWrapper.style.display = 'none';
   } else {
     if (authWrapper) authWrapper.style.display = 'flex';
   }
 
+  // Activity tracker to reset 30-minute timer while in dashboard
+  document.addEventListener('mousemove', () => {
+    if (window.pprDB.checkAuth()) {
+      sessionStorage.setItem('ppr_admin_last_activity', Date.now().toString());
+    }
+  }, { passive: true });
+
+  let failedAttempts = parseInt(sessionStorage.getItem('ppr_failed_auth_attempts') || '0', 10);
+  const lockUntil = parseInt(sessionStorage.getItem('ppr_auth_locked_until') || '0', 10);
+
   if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
+
+      const currentTime = Date.now();
+      const activeLock = parseInt(sessionStorage.getItem('ppr_auth_locked_until') || '0', 10);
+      if (activeLock && currentTime < activeLock) {
+        const remainingSec = Math.ceil((activeLock - currentTime) / 1000);
+        if (errorMsg) {
+          errorMsg.textContent = `Security lockout in effect. Please wait ${remainingSec} seconds before retrying.`;
+          errorMsg.style.display = 'block';
+        }
+        return;
+      }
+
       const pin = pinInput.value.trim();
       if (window.pprDB.login(pin)) {
+        sessionStorage.removeItem('ppr_failed_auth_attempts');
+        sessionStorage.removeItem('ppr_auth_locked_until');
+        sessionStorage.setItem('ppr_admin_last_activity', Date.now().toString());
         if (authWrapper) authWrapper.style.display = 'none';
         if (errorMsg) errorMsg.style.display = 'none';
         pinInput.value = '';
         refreshAllAdminViews();
       } else {
-        if (errorMsg) {
-          errorMsg.textContent = 'Incorrect PIN. Default PIN is ppr2026';
-          errorMsg.style.display = 'block';
+        failedAttempts++;
+        sessionStorage.setItem('ppr_failed_auth_attempts', failedAttempts.toString());
+        pinInput.value = '';
+
+        if (failedAttempts >= 5) {
+          const lockTime = Date.now() + 5 * 60 * 1000; // 5 minute lock
+          sessionStorage.setItem('ppr_auth_locked_until', lockTime.toString());
+          if (errorMsg) {
+            errorMsg.textContent = 'Too many failed login attempts. Dashboard locked for 5 minutes.';
+            errorMsg.style.display = 'block';
+          }
+        } else {
+          if (errorMsg) {
+            errorMsg.textContent = `Invalid credentials. Access denied. (${5 - failedAttempts} attempts remaining before temporary lockout)`;
+            errorMsg.style.display = 'block';
+          }
         }
       }
     });
@@ -53,6 +100,7 @@ function initAdminAuth() {
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
       window.pprDB.logout();
+      sessionStorage.removeItem('ppr_admin_last_activity');
       window.location.reload();
     });
   }

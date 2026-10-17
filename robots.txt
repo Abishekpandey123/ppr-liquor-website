@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /admin.html
+Disallow: /admin
 
-Sitemap: https://pprliquor.com/sitemap.xml
+Sitemap: https://www.pprliquor.com/sitemap.xml

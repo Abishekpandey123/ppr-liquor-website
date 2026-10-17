@@ -430,6 +430,45 @@ ul {
   font-size: 1.05rem;
 }
 
+/* Delivery Partner Buttons (DoorDash & Uber Eats) */
+.btn-doordash {
+  background: linear-gradient(135deg, #FF3008 0%, #D82200 100%);
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 18px rgba(255, 48, 8, 0.45);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.btn-doordash:hover {
+  background: linear-gradient(135deg, #FF451F 0%, #B81800 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 48, 8, 0.65);
+  color: #FFFFFF !important;
+}
+
+.btn-ubereats {
+  background: linear-gradient(135deg, #06C167 0%, #048C49 100%);
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 18px rgba(6, 193, 103, 0.4);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.btn-ubereats:hover {
+  background: linear-gradient(135deg, #10D575 0%, #03703A 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(6, 193, 103, 0.6);
+  color: #FFFFFF !important;
+}
+
+.btn-delivery-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
 /* Mobile Toggle */
 .mobile-toggle {
   display: none;
@@ -588,9 +627,8 @@ ul {
 
 .hero-title span {
   background: var(--color-gold-gradient);
-
-
-  : text;
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }
@@ -619,7 +657,53 @@ ul {
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.75rem;
+}
+
+/* Hero Fast Delivery Card */
+.hero-delivery-card {
+  background: rgba(12, 32, 68, 0.88);
+  border: 1.5px solid var(--color-gold);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 2rem;
+  margin: 0 auto 2.5rem;
+  max-width: 780px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(214, 164, 59, 0.22);
+  backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.hero-delivery-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold-light);
+}
+
+.hero-delivery-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.delivery-pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 10px #22C55E;
+  animation: pulseDot 2s infinite;
 }
 
 .hero-badges-row {
@@ -1984,4 +2068,197 @@ textarea.form-control {
   .hero-badges-row {
     gap: 1.25rem;
   }
+
+  .modal-delivery-actions {
+    flex-direction: column;
+  }
+}
+
+/* ==========================================================================
+   DELIVERY SECTION & PARTNER CARDS
+   ========================================================================== */
+.delivery-section {
+  background: linear-gradient(180deg, #05142c 0%, #0a1f42 50%, #05142c 100%);
+  position: relative;
+  border-top: 1px solid var(--color-cream-border);
+  border-bottom: 1px solid var(--color-cream-border);
+}
+
+.delivery-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.delivery-partner-card {
+  background: rgba(12, 32, 68, 0.75);
+  border: 1.5px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(12px);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.delivery-partner-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-gold);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(214, 164, 59, 0.25);
+}
+
+.delivery-partner-card.doordash-theme {
+  border-top: 4px solid #FF3008;
+}
+
+.delivery-partner-card.ubereats-theme {
+  border-top: 4px solid #06C167;
+}
+
+.partner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.partner-logo-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.partner-logo-title h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: #FFFFFF;
+}
+
+.partner-speed-badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-gold-light);
+  border: 1px solid rgba(214, 164, 59, 0.3);
+}
+
+.partner-desc {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.partner-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  color: var(--color-cream-soft);
+}
+
+.partner-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.partner-features li svg {
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+/* Modal Delivery Section */
+.modal-delivery-section {
+  background: rgba(9, 36, 82, 0.55);
+  border: 1px solid rgba(214, 164, 59, 0.35);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.modal-delivery-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--color-gold-light);
+  margin-bottom: 0.75rem;
+}
+
+.modal-delivery-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.modal-delivery-actions .btn {
+  flex: 1;
+  min-width: 155px;
+}
+
+/* Product Card Delivery Badges */
+.product-card-delivery-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0.5rem 0 0.25rem;
+  padding-top: 0.45rem;
+  border-top: 1px dashed rgba(214, 164, 59, 0.15);
+}
+
+.delivery-badge-link {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.delivery-badge-link.doordash {
+  background: rgba(255, 48, 8, 0.15);
+  color: #ff7561;
+  border: 1px solid rgba(255, 48, 8, 0.35);
+}
+
+.delivery-badge-link.doordash:hover {
+  background: #FF3008;
+  color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(255, 48, 8, 0.4);
+}
+
+.delivery-badge-link.ubereats {
+  background: rgba(6, 193, 103, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(6, 193, 103, 0.35);
+}
+
+.delivery-badge-link.ubereats:hover {
+  background: #06C167;
+  color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(6, 193, 103, 0.4);
+}
+
+.delivery-badge-label {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
 }

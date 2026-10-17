@@ -23,8 +23,8 @@
       <h1 class="auth-title">Store CMS Login</h1>
       <p class="auth-subtitle">1601 Paris Pike • Georgetown, Kentucky</p>
 
-      <div class="auth-error" id="authErrorMsg">
-        Incorrect PIN. Default PIN: ppr2026
+      <div class="auth-error" id="authErrorMsg" style="display: none;">
+        Invalid credentials. Access denied.
       </div>
 
       <form id="adminLoginForm">
@@ -32,7 +32,7 @@
           <label for="adminPinInput" class="form-label" style="text-align: left; display: block; margin-bottom: 0.35rem;">
             Security PIN / Password
           </label>
-          <input type="password" id="adminPinInput" class="form-control" placeholder="Enter store PIN (default: ppr2026)" required autofocus style="text-align: center; letter-spacing: 0.25em; font-size: 1.25rem;">
+          <input type="password" id="adminPinInput" class="form-control" placeholder="Enter store PIN / password" required autofocus style="text-align: center; letter-spacing: 0.25em; font-size: 1.25rem;">
         </div>
 
         <button type="submit" class="btn btn-gold btn-lg" style="width: 100%; margin-top: 0.5rem;">
@@ -218,6 +218,10 @@
             <div>
               <span style="color: var(--admin-text-muted); font-size: 0.78rem; text-transform: uppercase;">Email:</span>
               <div style="color: var(--color-gold-light); font-weight: 600;">pprliquor@gmail.com</div>
+            </div>
+            <div>
+              <span style="color: var(--admin-text-muted); font-size: 0.78rem; text-transform: uppercase;">Official Website:</span>
+              <div style="color: var(--color-gold-light); font-weight: 600;"><a href="https://www.pprliquor.com" target="_blank" style="color: var(--color-gold-light); text-decoration: underline;">www.pprliquor.com ↗</a></div>
             </div>
           </div>
         </div>
