@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PPR LIQUOR | Kentucky Bourbon, Wine & Spirits | Georgetown, KY</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Welcome to PPR LIQUOR in Georgetown, Kentucky. Your neighborhood store for Kentucky straight bourbon, fine wines, craft beer, and premium spirits at 1601 Paris Pike. Call (502) 370-4392.">
+  <meta name="keywords" content="PPR Liquor, Georgetown KY liquor store, Kentucky bourbon, Paris Pike liquor, allocated bourbon, craft beer Georgetown, wine Georgetown Kentucky">
+  <meta name="author" content="PPR LIQUOR">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="PPR LIQUOR | Bourbon, Wine & Spirits | Georgetown, KY">
+  <meta property="og:description" content="Your neighborhood destination for Kentucky bourbon, fine wine, craft beer and spirits. 1601 Paris Pike, Georgetown, KY 40324.">
+  <meta property="og:image" content="assets/images/ppr-liquor-logo.jpg">
+  <meta property="og:type" content="business.business">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/ppr-liquor-logo.jpg">
+  
+  <!-- Google Fonts: Playfair Display, Cinzel, Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <!-- Structured Data JSON-LD for Local Business SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LiquorStore",
+    "name": "PPR LIQUOR",
+    "image": "assets/images/ppr-liquor-logo.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1601 Paris Pike",
+      "addressLocality": "Georgetown",
+      "addressRegion": "KY",
+      "postalCode": "40324",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 38.2098,
+      "longitude": -84.5588
+    },
+    "telephone": "+15023704392",
+    "email": "pprliquor@gmail.com",
+    "url": "https://pprliquor.com",
+    "priceRange": "$$",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Sunday"],
+        "opens": "10:00",
+        "closes": "22:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday"],
+        "opens": "09:00",
+        "closes": "23:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Thursday", "Friday", "Saturday"],
+        "opens": "09:00",
+        "closes": "00:00"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- =========================================================================
+       21+ AGE VERIFICATION MODAL
+       ========================================================================= -->
+  <div class="age-gate-overlay" id="ageGateModal" role="dialog" aria-modal="true" aria-labelledby="ageGateHeading">
+    <div class="age-gate-box">
+      <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR Crest Logo" class="age-gate-logo">
+      <h2 class="age-gate-title" id="ageGateHeading">Welcome to PPR LIQUOR</h2>
+      <p class="age-gate-text">
+        Are you of legal drinking age? You must be <strong>21 years of age or older</strong> to view our catalog and enter this site.
+      </p>
+      <div class="age-gate-buttons">
+        <button id="btnAgeConfirm" class="btn btn-gold btn-lg">
+          I Am 21 or Older (Enter)
+        </button>
+        <button id="btnAgeReject" class="btn btn-outline-white btn-sm">
+          I Am Under 21 (Exit)
+        </button>
+      </div>
+      <p class="age-gate-disclaimer">
+        PPR LIQUOR adheres strictly to Kentucky alcohol laws. Please drink responsibly. We verify ID for all in-store purchases.
+      </p>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       TOP UTILITY BAR
+       ========================================================================= -->
+  <header class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-location">
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+        <span>1601 Paris Pike, Georgetown, KY 40324</span>
+      </div>
+
+      <div class="top-bar-status js-store-status status-open">
+        <span class="status-dot"></span>
+        <span>Checking store hours...</span>
+      </div>
+
+      <div class="top-bar-actions">
+        <a href="tel:+15023704392" class="top-bar-phone">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.25 1.02l-2.22 2.09z"/></svg>
+          <span>(502) 370-4392</span>
+        </a>
+        <a href="admin.html" class="top-bar-admin" title="Store Staff / Owner CMS Portal">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+          <span>Admin</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MAIN NAVIGATION
+       ========================================================================= -->
+  <nav class="site-header" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper" aria-label="PPR LIQUOR Homepage">
+        <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR Logo" class="brand-logo-img">
+        <div class="brand-info">
+          <div class="brand-title">PPR <span>LIQUOR</span></div>
+          <span class="brand-subtitle">Georgetown, Kentucky</span>
+        </div>
+      </a>
+
+      <div class="desktop-nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="catalog.html" class="nav-link">Browse Products</a>
+        <a href="specials.html" class="nav-link">Specials & Drops</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Visit & Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="catalog.html" class="btn btn-outline btn-sm">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          Browse Catalog
+        </a>
+        <a href="tel:+15023704392" class="btn btn-gold btn-sm">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.25 1.02l-2.22 2.09z"/></svg>
+          Call Store
+        </a>
+        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div style="text-align: right; margin-bottom: 2rem;">
+      <button id="mobileMenuClose" style="color: #fff; font-size: 2rem; background: none; border: none;">&times;</button>
+    </div>
+    <div class="mobile-nav-list">
+      <a href="index.html" class="mobile-nav-link active">Home</a>
+      <a href="catalog.html" class="mobile-nav-link">Browse Products</a>
+      <a href="specials.html" class="mobile-nav-link">Specials & New Arrivals</a>
+      <a href="about.html" class="mobile-nav-link">About Us</a>
+      <a href="contact.html" class="mobile-nav-link">Visit Us / Contact</a>
+      <a href="admin.html" class="mobile-nav-link" style="color: var(--color-gold);">Admin CMS Login</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem;">
+      <a href="tel:+15023704392" class="btn btn-gold">📞 Call Us: (502) 370-4392</a>
+      <a href="https://maps.google.com/?q=1601+Paris+Pike,+Georgetown,+KY+40324" target="_blank" class="btn btn-burgundy">📍 Get Directions</a>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       HERO SECTION (Exact Brief Specifications)
+       ========================================================================= -->
+  <section class="hero-section">
+    <img src="assets/images/hero-kentucky.jpg" alt="Kentucky Bluegrass Hills and Bourbon Barrels" class="hero-bg">
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+      <div class="hero-emblem-wrap">
+        <img src="assets/images/ppr-liquor-logo.jpg" alt="Official PPR LIQUOR Georgetown Kentucky Emblem" class="hero-emblem">
+      </div>
+
+      <div class="hero-location-pill">
+        ★ 1601 PARIS PIKE • GEORGETOWN, KY 40324 ★
+      </div>
+
+      <h1 class="hero-title">
+        Welcome to <span>PPR LIQUOR</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Your neighborhood destination for bourbon, whiskey, wine, beer and spirits in Georgetown, Kentucky.
+      </p>
+
+      <p class="hero-intro">
+        Explore our selection of Kentucky bourbon, popular spirits, wines and beer. Visit us at 1601 Paris Pike for friendly service and help finding your next favorite bottle.
+      </p>
+
+      <!-- Exact 3 Buttons from Brief -->
+      <div class="hero-cta-group">
+        <a href="catalog.html" class="btn btn-gold btn-lg">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+          Browse Products
+        </a>
+        <a href="https://maps.google.com/?q=1601+Paris+Pike,+Georgetown,+KY+40324" target="_blank" rel="noopener noreferrer" class="btn btn-burgundy btn-lg">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          Get Directions
+        </a>
+        <a href="tel:+15023704392" class="btn btn-outline btn-lg">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.25 1.02l-2.22 2.09z"/></svg>
+          Call Us: (502) 370-4392
+        </a>
+      </div>
+
+      <!-- Trust Badges From Official Logo Ribbon -->
+      <div class="hero-badges-row">
+        <div class="hero-badge-item">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          <span>Premium Selection</span>
+        </div>
+        <div class="hero-badge-item">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+          <span>Great Everyday Prices</span>
+        </div>
+        <div class="hero-badge-item">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+          <span>Wide Spirits Variety</span>
+        </div>
+        <div class="hero-badge-item">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span>Friendly Georgetown Service</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       LIVE ANNOUNCEMENT MARQUEE
+       ========================================================================= -->
+  <aside class="announcement-banner">
+    <div class="container">
+      <div class="ticker-content" id="announcementTicker">
+        🥃 Welcome to PPR LIQUOR • Ask About Allocated Bourbon Arrivals • Visit us on Paris Pike in Georgetown, KY!
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       VALUE PILLARS SECTION
+       ========================================================================= -->
+  <section class="pillars-section">
+    <div class="container">
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.1 4.5 2.3 7.1-6.2-4.6-6.2 4.6 2.3-7.1-6.1-4.5h7.6z"/></svg>
+          </div>
+          <h3 class="pillar-title">Kentucky Bourbon Country</h3>
+          <p class="pillar-desc">Located in the heart of Scott County. We stock authentic Kentucky straight bourbons from iconic distilleries.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+          </div>
+          <h3 class="pillar-title">Allocated & Rare Bottles</h3>
+          <p class="pillar-desc">Looking for Buffalo Trace, Blanton's, Eagle Rare, or Weller? Call (502) 370-4392 to ask about availability.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4V3zm-2 10c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V5h12v8zM4 19h16v2H4z"/></svg>
+          </div>
+          <h3 class="pillar-title">Walk-In Cold Beer Cave</h3>
+          <p class="pillar-desc">Stocked with ice-cold domestic favorites, local Kentucky craft ales, hard seltzers, and seasonal releases.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h3 class="pillar-title">Friendly Neighborhood Store</h3>
+          <p class="pillar-desc">Prompt, courteous advice from a store team passionate about helping you pick the perfect drink.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FEATURED CATEGORIES (Specified in Build Brief)
+       ========================================================================= -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">Explore Our Spirits</span>
+        <h2 class="section-title">Shop by Category</h2>
+        <p class="section-subtitle">
+          Browse our extensive in-store inventory across Kentucky straight bourbons, world whiskies, vintage wines, craft beers and party essentials.
+        </p>
+      </div>
+
+      <div class="categories-grid">
+        <a href="catalog.html?category=Kentucky+Bourbon" class="category-card">
+          <div class="cat-icon-wrap">🥃</div>
+          <div class="cat-name">Kentucky Bourbon</div>
+          <span class="cat-browse-hint">Explore →</span>
+        </a>
+
+        <a href="catalog.html?category=Whiskey+%26+Scotch" class="category-card">
+          <div class="cat-icon-wrap">🌾</div>
+          <div class="cat-name">Whiskey & Scotch</div>
+          <span class="cat-browse-hint">Explore →</span>
+        </a>
+
+        <a href="catalog.html?category=Tequila" class="category-card">
+          <div class="cat-icon-wrap">🌵</div>
+          <div class="cat-name">Tequila & Mezcal</div>
+          <span class="cat-browse-hint">Explore →</span>
+        </a>
+
+        <a href="catalog.html?category=Vodka" class="category-card">
+          <div class="cat-icon-wrap">🍸</div>
+          <div class="cat-name">Vodka</div>
+          <span class="cat-browse-hint">Explore →</span>
+        </a>
+
+        <a href="catalog.html?category=Wine" class="category-card">
+          <div class="cat-icon-wrap">🍷</div>
+          <div class="cat-name">Fine Wine</div>
+          <span class="cat-browse-hint">Explore →</span>
+        </a>
+
+        <a href="catalog.html?category=Champagne%2FSparkling" class="category-card">
+          <div class="cat-icon-wrap">🍾</div>
+          <div class="cat-name">Champagne & Sparkling</div>
+          <span class="cat-browse-hint">Explore →</span>
+        </a>
+
+        <a href="catalog.html?category=Beer" class="category-card">
+          <div class="cat-icon-wrap">🍺</div>
+          <div class="cat-name">Beer & Local Ales</div>
+          <span class="cat-browse-hint">Explore →</span>
+        </a>
+
+        <a href="catalog.html?category=Ready-to-Drink%2FCocktails" class="category-card">
+          <div class="cat-icon-wrap">🍹</div>
+          <div class="cat-name">Ready-to-Drink Cocktails</div>
+          <span class="cat-browse-hint">Explore →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FEATURED BOTTLES SHOWCASE (Verified Stocked Items)
+       ========================================================================= -->
+  <section class="section-padding" style="background: #061735;">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">Hand-Selected Bottles</span>
+        <h2 class="section-title">Featured Spirits & Bourbon</h2>
+        <p class="section-subtitle">
+          A showcase of iconic Kentucky straight bourbons and world-class spirits stocked at 1601 Paris Pike. Tap any bottle to view tasting notes.
+        </p>
+      </div>
+
+      <!-- Quick Filter Pills -->
+      <div class="catalog-filters-bar">
+        <div class="filter-pills" id="homeFilterPills">
+          <button class="filter-pill active" data-filter="all">All Featured</button>
+          <button class="filter-pill" data-filter="Kentucky Bourbon">Kentucky Bourbon</button>
+          <button class="filter-pill" data-filter="Tequila">Tequila</button>
+          <button class="filter-pill" data-filter="Whiskey & Scotch">Whiskey & Scotch</button>
+          <button class="filter-pill" data-filter="Wine">Wine & Champagne</button>
+        </div>
+
+        <div class="search-box-wrap">
+          <svg class="search-box-icon" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input type="text" id="homeSearchInput" placeholder="Search bottle or brand..." aria-label="Search featured bottles">
+        </div>
+      </div>
+
+      <!-- Live Product Grid -->
+      <div class="products-grid" id="homeProductsGrid">
+        <!-- Rendered dynamically by JS from PPR database -->
+      </div>
+
+      <div style="text-align: center; margin-top: 3.5rem;">
+        <a href="catalog.html" class="btn btn-gold btn-lg">
+          View Complete In-Store Product Catalog →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       CURRENT SPECIALS & PROMOTIONS (Owner-Editable via CMS)
+       ========================================================================= -->
+  <section class="section-padding specials-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">Neighborhood Deals</span>
+        <h2 class="section-title">Current In-Store Specials</h2>
+        <p class="section-subtitle">
+          Verified specials and feature spotlights at PPR LIQUOR. All offers valid in-store at 1601 Paris Pike while supplies last.
+        </p>
+      </div>
+
+      <div class="specials-grid" id="homeSpecialsGrid">
+        <!-- Rendered dynamically from window.pprDB -->
+      </div>
+
+      <div style="text-align: center; margin-top: 2.5rem;">
+        <a href="specials.html" class="btn btn-outline">
+          See All Current Promotions & Allocation Guidelines →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       ABOUT US & STORE EXPERIENCE (Exact Copy from Build Brief)
+       ========================================================================= -->
+  <section class="section-padding about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-stack">
+          <img src="assets/images/store-interior.jpg" alt="PPR LIQUOR Georgetown Store Interior" class="about-main-img">
+          <div class="about-floating-card">
+            <h4>PPR LIQUOR</h4>
+            <p>1601 Paris Pike, Georgetown, KY 40324 • Locally Owned & Operated</p>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <span class="section-eyebrow">Our Georgetown Story</span>
+          <h2 class="section-title">Welcome to Your Neighborhood Spirits Store</h2>
+          
+          <!-- Exact recommended copy from brief -->
+          <p class="about-lead">
+            PPR LIQUOR is a neighborhood liquor store in Georgetown, Kentucky, offering a selection of bourbon, whiskey, wine, beer and spirits. We aim to make shopping convenient with a welcoming atmosphere and helpful service. Stop by our store on Paris Pike to explore our selection.
+          </p>
+
+          <p class="about-text">
+            Whether you are on your way home from work, picking up a celebratory bottle, or hunting for rare Kentucky bourbon releases, our team is always ready with genuine Kentucky hospitality. We keep our shelves stocked with trusted classics, limited barrel expressions, and cold local beers.
+          </p>
+
+          <div class="about-checklist">
+            <div class="checklist-item">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              <span>Allocated Bourbon Specialists</span>
+            </div>
+            <div class="checklist-item">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              <span>Convenient Paris Pike Location</span>
+            </div>
+            <div class="checklist-item">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              <span>Walk-In Cold Beer Cave</span>
+            </div>
+            <div class="checklist-item">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              <span>Friendly & Knowledgeable Staff</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+            <a href="about.html" class="btn btn-gold">Read More About Us</a>
+            <a href="tel:+15023704392" class="btn btn-outline">Call Store: (502) 370-4392</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       HOURS & INTERACTIVE MAP SECTION
+       ========================================================================= -->
+  <section class="section-padding visit-section" id="visitSection">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">Visit Us in Georgetown</span>
+        <h2 class="section-title">Store Hours & Location</h2>
+        <p class="section-subtitle">
+          Conveniently located at 1601 Paris Pike in Georgetown, Kentucky. Stop in today or call us ahead of time.
+        </p>
+      </div>
+
+      <div class="visit-grid">
+        <!-- Store Hours Card -->
+        <div class="hours-card">
+          <div class="hours-card-head">
+            <div>
+              <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: #fff;">Operating Hours</h3>
+              <p style="font-size: 0.85rem; color: var(--color-gold-light);">Georgetown, Kentucky Local Time</p>
+            </div>
+            <div class="top-bar-status js-store-status status-open">
+              <span class="status-dot"></span>
+              <span>Open Now</span>
+            </div>
+          </div>
+
+          <div class="hours-table" id="storeHoursTable">
+            <div class="hours-row" data-day="sunday">
+              <span class="day-label">Sunday</span>
+              <span class="day-time">10:00 AM - 10:00 PM</span>
+            </div>
+            <div class="hours-row" data-day="monday">
+              <span class="day-label">Monday</span>
+              <span class="day-time">9:00 AM - 11:00 PM</span>
+            </div>
+            <div class="hours-row" data-day="tuesday">
+              <span class="day-label">Tuesday</span>
+              <span class="day-time">9:00 AM - 11:00 PM</span>
+            </div>
+            <div class="hours-row" data-day="wednesday">
+              <span class="day-label">Wednesday</span>
+              <span class="day-time">9:00 AM - 11:00 PM</span>
+            </div>
+            <div class="hours-row" data-day="thursday">
+              <span class="day-label">Thursday</span>
+              <span class="day-time">9:00 AM - 12:00 AM (Midnight)</span>
+            </div>
+            <div class="hours-row" data-day="friday">
+              <span class="day-label">Friday</span>
+              <span class="day-time">9:00 AM - 12:00 AM (Midnight)</span>
+            </div>
+            <div class="hours-row" data-day="saturday">
+              <span class="day-label">Saturday</span>
+              <span class="day-time">9:00 AM - 12:00 AM (Midnight)</span>
+            </div>
+          </div>
+
+          <!-- Quick Contacts -->
+          <div class="contact-quick-cards">
+            <a href="tel:+15023704392" class="contact-mini-card">
+              <div class="contact-mini-icon">📞</div>
+              <div>
+                <div class="contact-mini-title">Phone</div>
+                <div class="contact-mini-val">(502) 370-4392</div>
+              </div>
+            </a>
+            <a href="mailto:pprliquor@gmail.com" class="contact-mini-card">
+              <div class="contact-mini-icon">✉️</div>
+              <div>
+                <div class="contact-mini-title">Email</div>
+                <div class="contact-mini-val">pprliquor@gmail.com</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive Google Map Embed -->
+        <div class="map-wrap">
+          <iframe 
+            class="map-iframe"
+            title="PPR LIQUOR Location Map"
+            src="https://maps.google.com/maps?q=1601+Paris+Pike,+Georgetown,+KY+40324&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            loading="lazy" 
+            allowfullscreen>
+          </iframe>
+          <div class="map-bottom-bar">
+            <div>
+              <div class="map-address-text">📍 1601 Paris Pike, Georgetown, Kentucky 40324</div>
+              <span style="font-size: 0.78rem; color: var(--color-text-muted);">Spacious on-site parking available</span>
+            </div>
+            <div style="display: flex; gap: 0.65rem;">
+              <button id="btnCopyAddress" class="btn btn-outline btn-sm">Copy Address</button>
+              <a href="https://maps.google.com/?q=1601+Paris+Pike,+Georgetown,+KY+40324" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-sm">
+                Get Directions ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       CONTACT & BOTTLE INQUIRY FORM
+       ========================================================================= -->
+  <section class="section-padding contact-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">Get in Touch</span>
+        <h2 class="section-title">Send a Bottle Inquiry or Message</h2>
+        <p class="section-subtitle">
+          Looking for a specific vintage, allocation update, or party order? Send our store team a note directly.
+        </p>
+      </div>
+
+      <div class="contact-form-card">
+        <div class="form-success-banner" id="contactSuccessBanner">
+          ✓ Thank you! Your message has been received by PPR LIQUOR. Our store staff will get back to you shortly.
+        </div>
+
+        <form id="contactForm" novalidate>
+          <!-- Anti-Spam Honeypot Field -->
+          <div style="display:none;" aria-hidden="true">
+            <input type="text" name="website_hp" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="contactName" class="form-label">Full Name *</label>
+              <input type="text" id="contactName" class="form-control" placeholder="e.g. John Smith" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Email Address *</label>
+              <input type="email" id="contactEmail" class="form-control" placeholder="e.g. john@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactPhone" class="form-label">Phone Number (Optional)</label>
+              <input type="tel" id="contactPhone" class="form-control" placeholder="e.g. (502) 555-0123">
+            </div>
+
+            <div class="form-group">
+              <label for="contactSubject" class="form-label">Inquiry Topic</label>
+              <select id="contactSubject" class="form-control">
+                <option value="Bourbon Allocation Inquiry">Bourbon Allocation Inquiry</option>
+                <option value="Product Availability Check">Product Availability Check</option>
+                <option value="Bulk / Party / Event Order">Bulk / Party / Event Order</option>
+                <option value="Special Order Request">Special Order Request</option>
+                <option value="General Question">General Question</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="contactMessage" class="form-label">Your Message or Bottle Request *</label>
+              <textarea id="contactMessage" class="form-control" rows="4" placeholder="Let us know what bottle or brand you are looking for..." required></textarea>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <p class="form-privacy-note">
+              🔒 Privacy Notice: We do not share your contact details. Submissions are delivered securely to store management.
+            </p>
+            <button type="submit" class="btn btn-gold btn-lg">
+              Send Message to PPR LIQUOR
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FREQUENTLY ASKED QUESTIONS (FAQ)
+       ========================================================================= -->
+  <section class="section-padding faq-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">Helpful Information</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">
+          Everything you need to know about shopping with PPR LIQUOR in Georgetown, Kentucky.
+        </p>
+      </div>
+
+      <div class="faq-container">
+        <div class="faq-item active">
+          <button class="faq-question">
+            <span>What are your ID and age verification policies?</span>
+            <span class="faq-toggle-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            In accordance with Kentucky state law, you must be 21 years of age or older to purchase alcoholic beverages. We require and strictly inspect valid government-issued photo identification (Driver's License, Military ID, State ID, or Passport) for all purchases.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do you handle allocated and rare Kentucky bourbons?</span>
+            <span class="faq-toggle-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Allocated bottles (such as Buffalo Trace, Blanton's, Eagle Rare, and Weller) arrive periodically in limited quantities. We believe in fair neighborhood access. Feel free to call us at (502) 370-4392 to ask about current stock or upcoming delivery days!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can I buy alcohol online or have it delivered?</span>
+            <span class="faq-toggle-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            PPR LIQUOR operates as an in-person retail liquor store. This website is an informational browse-only catalog. We do not provide online checkout, online alcohol sales, or mail delivery. Please visit our store at 1601 Paris Pike in Georgetown to make purchases.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can you special order a specific wine, spirit, or craft beer?</span>
+            <span class="faq-toggle-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Yes! If an item is distributed in the Commonwealth of Kentucky, we will gladly look into placing a special distributor order for you. Call our store at (502) 370-4392 or submit an inquiry via our contact form.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Do you offer bulk discounts for weddings, parties, or corporate events?</span>
+            <span class="faq-toggle-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Yes, we regularly assist Georgetown community members with weddings, anniversary gatherings, and corporate events. Contact us ahead of time so we can ensure proper quantities and cold storage for your date.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-row">
+            <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR Emblem" class="footer-logo-img">
+            <div>
+              <div class="brand-title" style="font-size: 1.35rem;">PPR <span>LIQUOR</span></div>
+              <span class="brand-subtitle">Georgetown, Kentucky</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Your neighborhood destination for Kentucky straight bourbon, fine wine, craft beer, and premium spirits. Proudly serving Georgetown and Scott County.
+          </p>
+          <div style="display: flex; gap: 0.75rem;">
+            <a href="tel:+15023704392" class="btn btn-gold btn-sm">📞 (502) 370-4392</a>
+            <a href="https://maps.google.com/?q=1601+Paris+Pike,+Georgetown,+KY+40324" target="_blank" class="btn btn-outline btn-sm">📍 Directions</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalog.html">Browse Products</a></li>
+            <li><a href="specials.html">Specials & New Arrivals</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Store Location & Hours</a></li>
+            <li><a href="admin.html">Store Admin Portal</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Spirits & Categories</h4>
+          <ul class="footer-links">
+            <li><a href="catalog.html?category=Kentucky+Bourbon">Kentucky Bourbon</a></li>
+            <li><a href="catalog.html?category=Whiskey+%26+Scotch">Whiskey & Scotch</a></li>
+            <li><a href="catalog.html?category=Tequila">Tequila & Mezcal</a></li>
+            <li><a href="catalog.html?category=Vodka">Vodka</a></li>
+            <li><a href="catalog.html?category=Wine">Fine Wine</a></li>
+            <li><a href="catalog.html?category=Beer">Craft Beer & Seltzers</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Store Information</h4>
+          <div class="footer-contact-items">
+            <div class="footer-contact-item">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+              <span>1601 Paris Pike<br>Georgetown, KY 40324</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.25 1.02l-2.22 2.09z"/></svg>
+              <span>(502) 370-4392</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <span>pprliquor@gmail.com</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+              <span>Mon-Wed: 9am-11pm<br>Thu-Sat: 9am-12am<br>Sun: 10am-10pm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-legal-bar">
+        <p class="footer-legal-notice">
+          <strong>LEGAL NOTICE:</strong> You must be 21 years of age or older to purchase alcoholic beverages. PPR LIQUOR verifies ID for all purchases. This website is for informational purposes and browse-only catalog viewing. We do not process online transactions or ship alcohol. Please drink responsibly.
+        </p>
+        <p>© 2026 PPR LIQUOR. All rights reserved. Georgetown, Kentucky.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       PRODUCT QUICK-VIEW MODAL
+       ========================================================================= -->
+  <div class="modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalProductTitle">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+      <div class="modal-body-grid">
+        <div class="modal-img-wrap">
+          <img src="assets/images/bourbon-bottle.jpg" alt="Bottle Preview" id="modalProductImg" class="modal-img">
+        </div>
+        <div class="modal-info-col">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="product-category-tag" id="modalProductCategory">Kentucky Bourbon</span>
+            <span id="modalProductStatus" class="badge-instock">In Stock</span>
+          </div>
+          <h2 class="modal-title" id="modalProductTitle">Product Name</h2>
+          <div class="product-meta-specs" id="modalProductSpecs">Size: 750ml | Proof: 90 Proof</div>
+          <p class="modal-desc" id="modalProductDesc">Product description goes here.</p>
+          
+          <div>
+            <h4 style="font-size:0.82rem; text-transform:uppercase; color:var(--color-gold); margin-bottom:0.4rem; letter-spacing:0.08em;">Tasting Profile:</h4>
+            <div class="product-tasting-tags" id="modalProductTags"></div>
+          </div>
+
+          <div style="background:rgba(214,164,59,0.1); border-left:3px solid var(--color-gold); padding:0.75rem 1rem; border-radius:4px; margin:0.5rem 0;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <span style="font-size:0.85rem; color:var(--color-text-secondary);">Verified Store Price:</span>
+              <span style="font-size:1.4rem; font-family:var(--font-serif); font-weight:700; color:var(--color-gold-light);" id="modalProductPrice">$29.99</span>
+            </div>
+            <div style="font-size:0.72rem; color:var(--color-text-muted); margin-top:2px;">* Prices and inventory subject to daily change</div>
+          </div>
+
+          <a href="tel:+15023704392" id="modalProductCallBtn" class="btn btn-gold btn-lg">
+            📞 Call PPR LIQUOR to Inquire: (502) 370-4392
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Homepage Dynamic Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHomeProducts();
+      renderHomeSpecials();
+      setupHomeFilters();
+    });
+
+    function renderHomeProducts(filterCategory = 'all', searchQuery = '') {
+      const grid = document.getElementById('homeProductsGrid');
+      if (!grid || !window.pprDB) return;
+
+      let products = window.pprDB.getProducts();
+
+      if (filterCategory !== 'all') {
+        if (filterCategory === 'Wine') {
+          products = products.filter(p => p.category === 'Wine' || p.category === 'Champagne/Sparkling');
+        } else {
+          products = products.filter(p => p.category.toLowerCase().includes(filterCategory.toLowerCase()));
+        }
+      }
+
+      if (searchQuery.trim() !== '') {
+        const q = searchQuery.toLowerCase();
+        products = products.filter(p => 
+          p.name.toLowerCase().includes(q) || 
+          p.brand.toLowerCase().includes(q) ||
+          p.category.toLowerCase().includes(q)
+        );
+      }
+
+      // Limit to first 6-8 on home
+      const displayProducts = products.slice(0, 8);
+
+      if (displayProducts.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--color-text-muted);">
+            <h3>No bottles found matching your search.</h3>
+            <p>Please call us at (502) 370-4392 to check our full inventory!</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = displayProducts.map(renderProductCardHTML).join('');
+    }
+
+    function renderHomeSpecials() {
+      const grid = document.getElementById('homeSpecialsGrid');
+      if (!grid || !window.pprDB) return;
+
+      const specials = window.pprDB.getActiveSpecials().slice(0, 3);
+      if (specials.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align:center; padding: 2rem; color: var(--color-text-secondary);">
+            Check back soon for new weekly specials, or call us at (502) 370-4392!
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = specials.map(s => `
+        <div class="special-card">
+          <span class="special-badge-pill">${s.badge || 'Featured Deal'}</span>
+          <h3 class="special-title">${s.title}</h3>
+          <p class="special-subtitle">${s.subtitle || s.product}</p>
+          <div class="special-deal-banner">${s.dealText}</div>
+          <p class="special-terms">${s.terms}</p>
+          <div class="special-footer">
+            <span>Valid through: ${s.endDate || 'While Supplies Last'}</span>
+            <a href="tel:+15023704392" class="btn btn-gold btn-sm">Ask in Store</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function setupHomeFilters() {
+      const pills = document.querySelectorAll('#homeFilterPills .filter-pill');
+      const searchInput = document.getElementById('homeSearchInput');
+
+      let currentFilter = 'all';
+
+      pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          pills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          currentFilter = pill.getAttribute('data-filter');
+          renderHomeProducts(currentFilter, searchInput?.value || '');
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          renderHomeProducts(currentFilter, e.target.value);
+        });
+      }
+    }
+  </script>
+</body>
+</html>

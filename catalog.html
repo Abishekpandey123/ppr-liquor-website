@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Spirits & Bourbon Catalog | PPR LIQUOR Georgetown KY</title>
+  <meta name="description"
+    content="Browse our in-store selection of Kentucky Straight Bourbons, single barrels, rare allocations, fine wine, craft beers, and spirits. Call (502) 370-4392 to ask about availability.">
+
+  <link rel="icon" type="image/jpeg" href="assets/images/ppr-liquor-logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- 21+ Age Verification Modal -->
+  <div class="age-gate-overlay" id="ageGateModal" role="dialog" aria-modal="true">
+    <div class="age-gate-box">
+      <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR Logo" class="age-gate-logo">
+      <h2 class="age-gate-title">Welcome to PPR LIQUOR</h2>
+      <p class="age-gate-text">You must be 21 years of age or older to browse our catalog.</p>
+      <div class="age-gate-buttons">
+        <button id="btnAgeConfirm" class="btn btn-gold btn-lg">I Am 21 or Older (Enter)</button>
+        <button id="btnAgeReject" class="btn btn-outline-white btn-sm">I Am Under 21</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-location">
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" />
+        </svg>
+        <span>1601 Paris Pike, Georgetown, KY 40324</span>
+      </div>
+      <div class="top-bar-status js-store-status status-open">
+        <span class="status-dot"></span>
+        <span>Store Open</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="tel:+15023704392" class="top-bar-phone">📞 (502) 370-4392</a>
+        <a href="admin.html" class="top-bar-admin">⚙️ Admin</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR Logo" class="brand-logo-img">
+        <div class="brand-info">
+          <div class="brand-title">PPR <span>LIQUOR</span></div>
+          <span class="brand-subtitle">Georgetown, Kentucky</span>
+        </div>
+      </a>
+      <div class="desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="catalog.html" class="nav-link active">Browse Products</a>
+        <a href="specials.html" class="nav-link">Specials & Drops</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Visit & Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a href="tel:+15023704392" class="btn btn-gold btn-sm">📞 Call Store</a>
+        <button class="mobile-toggle" id="mobileMenuToggle">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div style="text-align: right; margin-bottom: 2rem;">
+      <button id="mobileMenuClose"
+        style="color: #fff; font-size: 2rem; background: none; border: none;">&times;</button>
+    </div>
+    <div class="mobile-nav-list">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="catalog.html" class="mobile-nav-link active">Browse Products</a>
+      <a href="specials.html" class="mobile-nav-link">Specials & New Arrivals</a>
+      <a href="about.html" class="mobile-nav-link">About Us</a>
+      <a href="contact.html" class="mobile-nav-link">Visit Us / Contact</a>
+      <a href="admin.html" class="mobile-nav-link" style="color: var(--color-gold);">Admin CMS Login</a>
+    </div>
+  </div>
+
+  <!-- Page Header Banner -->
+  <div
+    style="background: linear-gradient(180deg, #05142c 0%, #092452 100%); padding: 3.5rem 0 2.5rem; border-bottom: 1px solid var(--color-cream-border); text-align: center;">
+    <div class="container">
+      <span class="section-eyebrow">Browse-Only Catalog</span>
+      <h1 class="section-title">In-Store Spirits & Bourbon Selection</h1>
+      <p class="section-subtitle" style="max-width: 720px; margin: 0 auto;">
+        Explore our curated selection. As an in-person Kentucky retailer, online checkout is not offered. Tap
+        <strong>"Call to Ask About Availability"</strong> or visit us at 1601 Paris Pike!
+      </p>
+    </div>
+  </div>
+
+  <!-- Catalog Explorer Main -->
+  <main class="section-padding" style="padding-top: 2.5rem; background: #06152e;">
+    <div class="container">
+
+      <!-- Filter Bar: Search, Category, Size, Stock -->
+      <div
+        style="background: rgba(12, 32, 68, 0.85); border: 1.5px solid var(--glass-border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 2.5rem; backdrop-filter: blur(10px);">
+
+        <!-- Search & Secondary Filters Row -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;"
+          id="filterInputsGrid">
+          <div class="search-box-wrap" style="min-width: 100%;">
+            <svg class="search-box-icon" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            </svg>
+            <input type="text" id="catalogSearchInput" placeholder="Search by name, brand, or distillery..."
+              style="border-radius: var(--radius-md); padding: 0.75rem 1rem 0.75rem 2.6rem;">
+          </div>
+
+          <div>
+            <select id="sizeFilter" class="form-control" style="border-radius: var(--radius-md); height: 100%;">
+              <option value="all">All Sizes</option>
+              <option value="750ml">750ml</option>
+              <option value="1.75L">1.75L (Handle)</option>
+              <option value="1.0L">1.0L / 1L</option>
+              <option value="375ml">375ml</option>
+              <option value="Pack">Packs & Cans</option>
+            </select>
+          </div>
+
+          <div>
+            <select id="stockFilter" class="form-control" style="border-radius: var(--radius-md); height: 100%;">
+              <option value="all">All Stock Statuses</option>
+              <option value="In Stock">In Stock Only</option>
+              <option value="Limited Allocation">Limited Allocations</option>
+            </select>
+          </div>
+
+          <div>
+            <select id="sortFilter" class="form-control" style="border-radius: var(--radius-md); height: 100%;">
+              <option value="featured">Featured First</option>
+              <option value="name-asc">Name (A-Z)</option>
+              <option value="name-desc">Name (Z-A)</option>
+              <option value="price-asc">Price (Low to High)</option>
+              <option value="price-desc">Price (High to Low)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Category Pills (From Build Brief specifications) -->
+        <div class="filter-pills" id="catalogCategoryPills">
+          <button class="filter-pill active" data-cat="all">All Spirits</button>
+          <button class="filter-pill" data-cat="Kentucky Bourbon">Kentucky Bourbon</button>
+          <button class="filter-pill" data-cat="Whiskey & Scotch">Whiskey & Scotch</button>
+          <button class="filter-pill" data-cat="Tequila">Tequila</button>
+          <button class="filter-pill" data-cat="Vodka">Vodka</button>
+          <button class="filter-pill" data-cat="Wine">Wine</button>
+          <button class="filter-pill" data-cat="Champagne/Sparkling">Champagne</button>
+          <button class="filter-pill" data-cat="Beer">Beer</button>
+          <button class="filter-pill" data-cat="Ready-to-Drink/Cocktails">RTD Cocktails</button>
+        </div>
+      </div>
+
+      <!-- Inventory Results Summary -->
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; color: var(--color-text-secondary); font-size: 0.9rem;">
+        <div id="resultsCount">Loading verified inventory...</div>
+        <div style="font-size: 0.78rem; color: var(--color-text-muted);">
+          * In-store retail only. Verified inventory at 1601 Paris Pike, Georgetown KY.
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="catalogProductsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Custom Order Banner -->
+      <div
+        style="margin-top: 4.5rem; background: linear-gradient(135deg, #0d254e 0%, #081734 100%); border: 1.5px solid var(--color-gold); border-radius: var(--radius-lg); padding: 3rem; text-align: center; box-shadow: var(--shadow-gold);">
+        <h3 style="font-family: var(--font-serif); font-size: 1.85rem; color: #fff; margin-bottom: 0.65rem;">
+          Looking for a Rare Bourbon or Special Vintage?
+        </h3>
+        <p style="color: var(--color-text-secondary); max-width: 680px; margin: 0 auto 1.5rem; font-size: 1rem;">
+          If you don't see the specific bottle, vintage, or craft ale you're seeking, our store team can check Kentucky
+          distributor availability or notify you when allocated shipments arrive.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="tel:+15023704392" class="btn btn-gold btn-lg">📞 Call Store: (502) 370-4392</a>
+          <a href="contact.html" class="btn btn-outline btn-lg">Submit Bottle Request Form</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Product Modal -->
+  <div class="modal-overlay" id="productModal" role="dialog" aria-modal="true">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      <div class="modal-body-grid">
+        <div class="modal-img-wrap">
+          <img src="assets/images/bourbon-bottle.jpg" alt="Bottle Preview" id="modalProductImg" class="modal-img">
+        </div>
+        <div class="modal-info-col">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="product-category-tag" id="modalProductCategory">Kentucky Bourbon</span>
+            <span id="modalProductStatus" class="badge-instock">In Stock</span>
+          </div>
+          <h2 class="modal-title" id="modalProductTitle">Product Name</h2>
+          <div class="product-meta-specs" id="modalProductSpecs">Size: 750ml | Proof: 90 Proof</div>
+          <p class="modal-desc" id="modalProductDesc">Product description goes here.</p>
+          <div>
+            <h4 style="font-size:0.82rem; text-transform:uppercase; color:var(--color-gold); margin-bottom:0.4rem;">
+              Tasting Profile:</h4>
+            <div class="product-tasting-tags" id="modalProductTags"></div>
+          </div>
+          <div
+            style="background:rgba(214,164,59,0.1); border-left:3px solid var(--color-gold); padding:0.75rem 1rem; border-radius:4px; margin:0.5rem 0;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <span style="font-size:0.85rem; color:var(--color-text-secondary);">Verified Store Price:</span>
+              <span
+                style="font-size:1.4rem; font-family:var(--font-serif); font-weight:700; color:var(--color-gold-light);"
+                id="modalProductPrice">$29.99</span>
+            </div>
+            <div style="font-size:0.72rem; color:var(--color-text-muted); margin-top:2px;">* Prices and inventory
+              subject to daily change</div>
+          </div>
+          <a href="tel:+15023704392" id="modalProductCallBtn" class="btn btn-gold btn-lg">
+            📞 Call PPR LIQUOR to Inquire: (502) 370-4392
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-row">
+            <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR Logo" class="footer-logo-img">
+            <div>
+              <div class="brand-title" style="font-size: 1.35rem;">PPR <span>LIQUOR</span></div>
+              <span class="brand-subtitle">Georgetown, Kentucky</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Your neighborhood destination for Kentucky straight bourbon, fine wine, craft beer, and premium spirits.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalog.html">Browse Products</a></li>
+            <li><a href="specials.html">Specials & Drops</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Store Location & Hours</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Store Hours</h4>
+          <div style="font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.8;">
+            <p><strong>Sunday:</strong> 10:00 AM - 10:00 PM</p>
+            <p><strong>Mon - Wed:</strong> 9:00 AM - 11:00 PM</p>
+            <p><strong>Thu - Sat:</strong> 9:00 AM - 12:00 AM</p>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Contact Us</h4>
+          <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0.5rem;">
+            1601 Paris Pike, Georgetown, KY 40324
+          </p>
+          <a href="tel:+15023704392" class="btn btn-gold btn-sm">📞 (502) 370-4392</a>
+        </div>
+      </div>
+      <div class="footer-legal-bar">
+        <p class="footer-legal-notice">
+          <strong>LEGAL NOTICE:</strong> You must be 21 years of age or older to purchase alcoholic beverages. PPR
+          LIQUOR verifies ID for all purchases. This website is for informational purposes and browse-only catalog
+          viewing.
+        </p>
+        <p>© 2026 PPR LIQUOR. Georgetown, Kentucky.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check URL parameters for preset category
+      const urlParams = new URLSearchParams(window.location.search);
+      const categoryParam = urlParams.get('category');
+
+      let currentCategory = categoryParam || 'all';
+      let currentSearch = '';
+      let currentSize = 'all';
+      let currentStock = 'all';
+      let currentSort = 'featured';
+
+      const searchInput = document.getElementById('catalogSearchInput');
+      const sizeFilter = document.getElementById('sizeFilter');
+      const stockFilter = document.getElementById('stockFilter');
+      const sortFilter = document.getElementById('sortFilter');
+      const categoryPills = document.querySelectorAll('#catalogCategoryPills .filter-pill');
+
+      // Highlight active category pill if param exists
+      if (categoryParam) {
+        categoryPills.forEach(p => {
+          if (p.getAttribute('data-cat') === categoryParam) {
+            categoryPills.forEach(x => x.classList.remove('active'));
+            p.classList.add('active');
+          }
+        });
+      }
+
+      function filterAndRender() {
+        const grid = document.getElementById('catalogProductsGrid');
+        const countEl = document.getElementById('resultsCount');
+        if (!grid || !window.pprDB) return;
+
+        let list = window.pprDB.getProducts();
+
+        // Category filter
+        if (currentCategory !== 'all') {
+          list = list.filter(p => p.category.toLowerCase() === currentCategory.toLowerCase());
+        }
+
+        // Search filter
+        if (currentSearch.trim() !== '') {
+          const q = currentSearch.toLowerCase();
+          list = list.filter(p =>
+            p.name.toLowerCase().includes(q) ||
+            p.brand.toLowerCase().includes(q) ||
+            p.category.toLowerCase().includes(q) ||
+            (p.tastingNotes && p.tastingNotes.some(t => t.toLowerCase().includes(q)))
+          );
+        }
+
+        // Size filter
+        if (currentSize !== 'all') {
+          list = list.filter(p => p.size.toLowerCase().includes(currentSize.toLowerCase()));
+        }
+
+        // Stock filter
+        if (currentStock !== 'all') {
+          list = list.filter(p => p.status === currentStock);
+        }
+
+        // Sort
+        if (currentSort === 'name-asc') {
+          list.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (currentSort === 'name-desc') {
+          list.sort((a, b) => b.name.localeCompare(a.name));
+        } else if (currentSort === 'price-asc') {
+          list.sort((a, b) => {
+            const pa = parseFloat((a.price || '').replace(/[^0-9.]/g, '')) || 9999;
+            const pb = parseFloat((b.price || '').replace(/[^0-9.]/g, '')) || 9999;
+            return pa - pb;
+          });
+        } else if (currentSort === 'price-desc') {
+          list.sort((a, b) => {
+            const pa = parseFloat((a.price || '').replace(/[^0-9.]/g, '')) || 0;
+            const pb = parseFloat((b.price || '').replace(/[^0-9.]/g, '')) || 0;
+            return pb - pa;
+          });
+        }
+
+        if (countEl) {
+          countEl.innerHTML = `Showing <strong>${list.length}</strong> verified items`;
+        }
+
+        if (list.length === 0) {
+          grid.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1.5rem; background: rgba(12, 32, 68, 0.4); border-radius: var(--radius-lg); border: 1px dashed var(--glass-border);">
+              <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff;">No Bottles Found</h3>
+              <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">We carry many more unlisted items in our Georgetown store! Call us to check current availability.</p>
+              <a href="tel:+15023704392" class="btn btn-gold">📞 Call Store: (502) 370-4392</a>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = list.map(renderProductCardHTML).join('');
+      }
+
+      // Category Pill Listeners
+      categoryPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          categoryPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          currentCategory = pill.getAttribute('data-cat');
+          filterAndRender();
+        });
+      });
+
+      // Search Listener
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentSearch = e.target.value;
+          filterAndRender();
+        });
+      }
+
+      // Size Filter
+      if (sizeFilter) {
+        sizeFilter.addEventListener('change', (e) => {
+          currentSize = e.target.value;
+          filterAndRender();
+        });
+      }
+
+      // Stock Filter
+      if (stockFilter) {
+        stockFilter.addEventListener('change', (e) => {
+          currentStock = e.target.value;
+          filterAndRender();
+        });
+      }
+
+      // Sort Filter
+      if (sortFilter) {
+        sortFilter.addEventListener('change', (e) => {
+          currentSort = e.target.value;
+          filterAndRender();
+        });
+      }
+
+      // Initial Render
+      filterAndRender();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "ppr-liquor-official-website",
+  "version": "1.0.0",
+  "description": "PPR Liquor Official Website and Admin Portal",
+  "main": "serve.js",
+  "scripts": {
+    "start": "node serve.js",
+    "dev": "node serve.js"
+  },
+  "keywords": [
+    "liquor",
+    "store",
+    "ppr-liquor"
+  ],
+  "author": "",
+  "license": "ISC"
+}

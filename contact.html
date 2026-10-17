@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visit Us & Store Location | PPR LIQUOR Georgetown KY</title>
+  <meta name="description" content="Visit PPR LIQUOR at 1601 Paris Pike in Georgetown, Kentucky. View store hours, Google map directions, telephone contact, and message form.">
+  
+  <link rel="icon" type="image/jpeg" href="assets/images/ppr-liquor-logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Age Gate Modal -->
+  <div class="age-gate-overlay" id="ageGateModal" role="dialog" aria-modal="true">
+    <div class="age-gate-box">
+      <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR Logo" class="age-gate-logo">
+      <h2 class="age-gate-title">Welcome to PPR LIQUOR</h2>
+      <p class="age-gate-text">You must be 21 years of age or older to enter.</p>
+      <div class="age-gate-buttons">
+        <button id="btnAgeConfirm" class="btn btn-gold btn-lg">I Am 21 or Older (Enter)</button>
+        <button id="btnAgeReject" class="btn btn-outline-white btn-sm">I Am Under 21</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-location">
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+        <span>1601 Paris Pike, Georgetown, KY 40324</span>
+      </div>
+      <div class="top-bar-status js-store-status status-open">
+        <span class="status-dot"></span>
+        <span>Store Open</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="tel:+15023704392" class="top-bar-phone">📞 (502) 370-4392</a>
+        <a href="admin.html" class="top-bar-admin">⚙️ Admin</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR Logo" class="brand-logo-img">
+        <div class="brand-info">
+          <div class="brand-title">PPR <span>LIQUOR</span></div>
+          <span class="brand-subtitle">Georgetown, Kentucky</span>
+        </div>
+      </a>
+      <div class="desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="catalog.html" class="nav-link">Browse Products</a>
+        <a href="specials.html" class="nav-link">Specials & Drops</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link active">Visit & Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a href="tel:+15023704392" class="btn btn-gold btn-sm">📞 Call Store</a>
+        <button class="mobile-toggle" id="mobileMenuToggle"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div style="text-align: right; margin-bottom: 2rem;">
+      <button id="mobileMenuClose" style="color: #fff; font-size: 2rem; background: none; border: none;">&times;</button>
+    </div>
+    <div class="mobile-nav-list">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="catalog.html" class="mobile-nav-link">Browse Products</a>
+      <a href="specials.html" class="mobile-nav-link">Specials & New Arrivals</a>
+      <a href="about.html" class="mobile-nav-link">About Us</a>
+      <a href="contact.html" class="mobile-nav-link active">Visit Us / Contact</a>
+      <a href="admin.html" class="mobile-nav-link" style="color: var(--color-gold);">Admin CMS Login</a>
+    </div>
+  </div>
+
+  <!-- Header Banner -->
+  <div style="background: linear-gradient(180deg, #05142c 0%, #092452 100%); padding: 3.5rem 0 2.5rem; border-bottom: 1px solid var(--color-cream-border); text-align: center;">
+    <div class="container">
+      <span class="section-eyebrow">Georgetown, Kentucky Location</span>
+      <h1 class="section-title">Visit Us on Paris Pike</h1>
+      <p class="section-subtitle" style="max-width: 720px; margin: 0 auto;">
+        We are open 7 days a week with convenient front-door parking. Stop by or get in touch below.
+      </p>
+    </div>
+  </div>
+
+  <main class="section-padding" style="background: #06152e;">
+    <div class="container">
+      
+      <!-- Hours & Interactive Map -->
+      <div class="visit-grid" style="margin-bottom: 4.5rem;">
+        
+        <!-- Store Hours Card -->
+        <div class="hours-card">
+          <div class="hours-card-head">
+            <div>
+              <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: #fff;">Store Operating Hours</h3>
+              <p style="font-size: 0.85rem; color: var(--color-gold-light);">Eastern Time (ET)</p>
+            </div>
+            <div class="top-bar-status js-store-status status-open">
+              <span class="status-dot"></span>
+              <span>Open Now</span>
+            </div>
+          </div>
+
+          <div class="hours-table">
+            <div class="hours-row" data-day="sunday">
+              <span class="day-label">Sunday</span>
+              <span class="day-time">10:00 AM - 10:00 PM</span>
+            </div>
+            <div class="hours-row" data-day="monday">
+              <span class="day-label">Monday</span>
+              <span class="day-time">9:00 AM - 11:00 PM</span>
+            </div>
+            <div class="hours-row" data-day="tuesday">
+              <span class="day-label">Tuesday</span>
+              <span class="day-time">9:00 AM - 11:00 PM</span>
+            </div>
+            <div class="hours-row" data-day="wednesday">
+              <span class="day-label">Wednesday</span>
+              <span class="day-time">9:00 AM - 11:00 PM</span>
+            </div>
+            <div class="hours-row" data-day="thursday">
+              <span class="day-label">Thursday</span>
+              <span class="day-time">9:00 AM - 12:00 AM (Midnight)</span>
+            </div>
+            <div class="hours-row" data-day="friday">
+              <span class="day-label">Friday</span>
+              <span class="day-time">9:00 AM - 12:00 AM (Midnight)</span>
+            </div>
+            <div class="hours-row" data-day="saturday">
+              <span class="day-label">Saturday</span>
+              <span class="day-time">9:00 AM - 12:00 AM (Midnight)</span>
+            </div>
+          </div>
+
+          <!-- Quick Contacts -->
+          <div class="contact-quick-cards">
+            <a href="tel:+15023704392" class="contact-mini-card">
+              <div class="contact-mini-icon">📞</div>
+              <div>
+                <div class="contact-mini-title">Phone</div>
+                <div class="contact-mini-val">(502) 370-4392</div>
+              </div>
+            </a>
+            <a href="mailto:pprliquor@gmail.com" class="contact-mini-card">
+              <div class="contact-mini-icon">✉️</div>
+              <div>
+                <div class="contact-mini-title">Email</div>
+                <div class="contact-mini-val">pprliquor@gmail.com</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Google Maps Embed -->
+        <div class="map-wrap">
+          <iframe 
+            class="map-iframe"
+            title="PPR LIQUOR Google Maps Location"
+            src="https://maps.google.com/maps?q=1601+Paris+Pike,+Georgetown,+KY+40324&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            loading="lazy" 
+            allowfullscreen>
+          </iframe>
+          <div class="map-bottom-bar">
+            <div>
+              <div class="map-address-text">📍 1601 Paris Pike, Georgetown, Kentucky 40324</div>
+              <span style="font-size: 0.78rem; color: var(--color-text-muted);">Scott County • Quick Paris Pike access</span>
+            </div>
+            <div style="display: flex; gap: 0.65rem;">
+              <button id="btnCopyAddress" class="btn btn-outline btn-sm">Copy Address</button>
+              <a href="https://maps.google.com/?q=1601+Paris+Pike,+Georgetown,+KY+40324" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-sm">
+                Get Directions ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-card">
+        <div class="section-head" style="margin-bottom: 2rem;">
+          <span class="section-eyebrow">Direct Store Messaging</span>
+          <h2 class="section-title" style="font-size: 2rem;">Send Us a Message</h2>
+          <p class="section-subtitle">
+            Need to ask about bottle availability, place a party hold, or inquire about rare bourbons? Send us a message and we'll reply promptly.
+          </p>
+        </div>
+
+        <div class="form-success-banner" id="contactSuccessBanner">
+          ✓ Thank you! Your message has been submitted to PPR LIQUOR store management. We will get back to you shortly.
+        </div>
+
+        <form id="contactForm" novalidate>
+          <div style="display:none;" aria-hidden="true">
+            <input type="text" name="website_hp" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="contactName" class="form-label">Full Name *</label>
+              <input type="text" id="contactName" class="form-control" placeholder="Your name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Email Address *</label>
+              <input type="email" id="contactEmail" class="form-control" placeholder="Your email address" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactPhone" class="form-label">Phone Number (Optional)</label>
+              <input type="tel" id="contactPhone" class="form-control" placeholder="(502) 555-0123">
+            </div>
+
+            <div class="form-group">
+              <label for="contactSubject" class="form-label">Inquiry Subject</label>
+              <select id="contactSubject" class="form-control">
+                <option value="Bourbon Allocation Inquiry">Bourbon Allocation Inquiry</option>
+                <option value="Product Availability Check">Product Availability Check</option>
+                <option value="Special Order Request">Special Order Request</option>
+                <option value="Event / Party Bulk Inquiry">Event / Party Bulk Inquiry</option>
+                <option value="General Question">General Question</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="contactMessage" class="form-label">Message *</label>
+              <textarea id="contactMessage" class="form-control" rows="5" placeholder="Tell us how we can help..." required></textarea>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <p class="form-privacy-note">
+              🔒 Privacy Guarantee: Your information is kept strictly confidential and only used to respond to your inquiry.
+            </p>
+            <button type="submit" class="btn btn-gold btn-lg">Send Message to Store</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-row">
+            <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR Logo" class="footer-logo-img">
+            <div>
+              <div class="brand-title" style="font-size: 1.35rem;">PPR <span>LIQUOR</span></div>
+              <span class="brand-subtitle">Georgetown, Kentucky</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Your neighborhood destination for Kentucky straight bourbon, fine wine, craft beer, and premium spirits.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalog.html">Browse Products</a></li>
+            <li><a href="specials.html">Specials & Drops</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Store Location & Hours</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Store Hours</h4>
+          <div style="font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.8;">
+            <p><strong>Sunday:</strong> 10:00 AM - 10:00 PM</p>
+            <p><strong>Mon - Wed:</strong> 9:00 AM - 11:00 PM</p>
+            <p><strong>Thu - Sat:</strong> 9:00 AM - 12:00 AM</p>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Contact</h4>
+          <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0.5rem;">
+            1601 Paris Pike, Georgetown, KY 40324
+          </p>
+          <a href="tel:+15023704392" class="btn btn-gold btn-sm">📞 (502) 370-4392</a>
+        </div>
+      </div>
+      <div class="footer-legal-bar">
+        <p class="footer-legal-notice">
+          <strong>LEGAL NOTICE:</strong> You must be 21 years of age or older to purchase alcoholic beverages. PPR LIQUOR verifies ID for all purchases. This website is an informational browse-only catalog.
+        </p>
+        <p>© 2026 PPR LIQUOR. Georgetown, Kentucky.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

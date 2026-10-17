@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Specials & Bourbon Drops | PPR LIQUOR Georgetown KY</title>
+  <meta name="description" content="View active store specials, limited allocated bourbon release guidelines, and featured wine deals at PPR LIQUOR in Georgetown, Kentucky.">
+  
+  <link rel="icon" type="image/jpeg" href="assets/images/ppr-liquor-logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Age Gate Modal -->
+  <div class="age-gate-overlay" id="ageGateModal" role="dialog" aria-modal="true">
+    <div class="age-gate-box">
+      <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR Logo" class="age-gate-logo">
+      <h2 class="age-gate-title">Welcome to PPR LIQUOR</h2>
+      <p class="age-gate-text">You must be 21 years of age or older to enter.</p>
+      <div class="age-gate-buttons">
+        <button id="btnAgeConfirm" class="btn btn-gold btn-lg">I Am 21 or Older (Enter)</button>
+        <button id="btnAgeReject" class="btn btn-outline-white btn-sm">I Am Under 21</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-location">
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+        <span>1601 Paris Pike, Georgetown, KY 40324</span>
+      </div>
+      <div class="top-bar-status js-store-status status-open">
+        <span class="status-dot"></span>
+        <span>Store Open</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="tel:+15023704392" class="top-bar-phone">📞 (502) 370-4392</a>
+        <a href="admin.html" class="top-bar-admin">⚙️ Admin</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR Logo" class="brand-logo-img">
+        <div class="brand-info">
+          <div class="brand-title">PPR <span>LIQUOR</span></div>
+          <span class="brand-subtitle">Georgetown, Kentucky</span>
+        </div>
+      </a>
+      <div class="desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="catalog.html" class="nav-link">Browse Products</a>
+        <a href="specials.html" class="nav-link active">Specials & Drops</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Visit & Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a href="tel:+15023704392" class="btn btn-gold btn-sm">📞 Call Store</a>
+        <button class="mobile-toggle" id="mobileMenuToggle"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div style="text-align: right; margin-bottom: 2rem;">
+      <button id="mobileMenuClose" style="color: #fff; font-size: 2rem; background: none; border: none;">&times;</button>
+    </div>
+    <div class="mobile-nav-list">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="catalog.html" class="mobile-nav-link">Browse Products</a>
+      <a href="specials.html" class="mobile-nav-link active">Specials & New Arrivals</a>
+      <a href="about.html" class="mobile-nav-link">About Us</a>
+      <a href="contact.html" class="mobile-nav-link">Visit Us / Contact</a>
+      <a href="admin.html" class="mobile-nav-link" style="color: var(--color-gold);">Admin CMS Login</a>
+    </div>
+  </div>
+
+  <!-- Header Banner -->
+  <div style="background: linear-gradient(180deg, #05142c 0%, #092452 100%); padding: 3.5rem 0 2.5rem; border-bottom: 1px solid var(--color-cream-border); text-align: center;">
+    <div class="container">
+      <span class="section-eyebrow">Owner-Verified Promotions</span>
+      <h1 class="section-title">Current In-Store Specials & Releases</h1>
+      <p class="section-subtitle" style="max-width: 720px; margin: 0 auto;">
+        All deals require in-store purchase at 1601 Paris Pike in Georgetown, Kentucky. Supplies are limited and updated frequently.
+      </p>
+    </div>
+  </div>
+
+  <main class="section-padding" style="background: #06152e;">
+    <div class="container">
+      
+      <!-- Specials Grid -->
+      <div class="specials-grid" id="specialsPageGrid">
+        <!-- Rendered dynamically from window.pprDB -->
+      </div>
+
+      <!-- Allocated Bourbon Policy Information -->
+      <div style="margin-top: 4.5rem; background: linear-gradient(145deg, #0e2753 0%, #081734 100%); border: 1.5px solid var(--glass-border); border-radius: var(--radius-lg); padding: 3rem;">
+        <div style="max-width: 820px; margin: 0 auto;">
+          <span class="section-eyebrow">Fair Neighborhood Policy</span>
+          <h2 style="font-family: var(--font-serif); font-size: 1.85rem; color: #fff; margin-bottom: 1rem;">
+            How We Handle Rare & Allocated Bourbon Releases
+          </h2>
+          <p style="color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 1.25rem;">
+            Bottles like <em>Blanton’s Single Barrel, Buffalo Trace, Eagle Rare, W.L. Weller, and E.H. Taylor</em> are produced in limited quantities by Kentucky distilleries and allocated through regional distributors.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+            <div style="background: rgba(5,20,44,0.6); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid rgba(214,164,59,0.2);">
+              <h4 style="color: var(--color-gold-light); margin-bottom: 0.35rem;">1. First-Come, In-Store</h4>
+              <p style="font-size: 0.88rem; color: var(--color-text-secondary);">We put allocated bottles on our shelves as they arrive for our local neighborhood shoppers.</p>
+            </div>
+            <div style="background: rgba(5,20,44,0.6); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid rgba(214,164,59,0.2);">
+              <h4 style="color: var(--color-gold-light); margin-bottom: 0.35rem;">2. Bottle Limits</h4>
+              <p style="font-size: 0.88rem; color: var(--color-text-secondary);">Strict one bottle per customer limits apply to rare allocations so more community members can enjoy them.</p>
+            </div>
+            <div style="background: rgba(5,20,44,0.6); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid rgba(214,164,59,0.2);">
+              <h4 style="color: var(--color-gold-light); margin-bottom: 0.35rem;">3. Call to Verify</h4>
+              <p style="font-size: 0.88rem; color: var(--color-text-secondary);">Because shipments sell quickly, call us at (502) 370-4392 to ask about today's shipment status.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-row">
+            <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR Logo" class="footer-logo-img">
+            <div>
+              <div class="brand-title" style="font-size: 1.35rem;">PPR <span>LIQUOR</span></div>
+              <span class="brand-subtitle">Georgetown, Kentucky</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Your neighborhood destination for Kentucky straight bourbon, fine wine, craft beer, and premium spirits.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalog.html">Browse Products</a></li>
+            <li><a href="specials.html">Specials & Drops</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Store Location & Hours</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Store Hours</h4>
+          <div style="font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.8;">
+            <p><strong>Sunday:</strong> 10:00 AM - 10:00 PM</p>
+            <p><strong>Mon - Wed:</strong> 9:00 AM - 11:00 PM</p>
+            <p><strong>Thu - Sat:</strong> 9:00 AM - 12:00 AM</p>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Store Contact</h4>
+          <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0.5rem;">
+            1601 Paris Pike, Georgetown, KY 40324
+          </p>
+          <a href="tel:+15023704392" class="btn btn-gold btn-sm">📞 (502) 370-4392</a>
+        </div>
+      </div>
+      <div class="footer-legal-bar">
+        <p class="footer-legal-notice">
+          <strong>LEGAL NOTICE:</strong> You must be 21 years of age or older to purchase alcoholic beverages. PPR LIQUOR verifies ID for all purchases. This website is an informational browse-only catalog.
+        </p>
+        <p>© 2026 PPR LIQUOR. Georgetown, Kentucky.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('specialsPageGrid');
+      if (!grid || !window.pprDB) return;
+
+      const specials = window.pprDB.getActiveSpecials();
+      if (specials.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 4rem; color: var(--color-text-secondary);">
+            <h3>No active promotions at this exact moment.</h3>
+            <p>Please call us at (502) 370-4392 for in-store unadvertised manager specials!</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = specials.map(s => `
+        <div class="special-card">
+          <span class="special-badge-pill">${s.badge || 'Featured Deal'}</span>
+          <h3 class="special-title">${s.title}</h3>
+          <p class="special-subtitle">${s.subtitle || s.product}</p>
+          <div class="special-deal-banner">${s.dealText}</div>
+          <p class="special-terms">${s.terms}</p>
+          <div class="special-footer">
+            <span>Valid through: <strong>${s.endDate || 'While Supplies Last'}</strong></span>
+            <a href="tel:+15023704392" class="btn btn-gold btn-sm">Ask About Deal</a>
+          </div>
+        </div>
+      `).join('');
+    });
+  </script>
+</body>
+</html>

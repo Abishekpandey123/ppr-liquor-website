@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PPR LIQUOR | Store Management CMS Portal</title>
+  
+  <link rel="icon" type="image/jpeg" href="assets/images/ppr-liquor-logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- =========================================================================
+       ADMIN AUTHENTICATION LOCK SCREEN (Default PIN: ppr2026)
+       ========================================================================= -->
+  <div class="auth-wrapper" id="adminAuthScreen">
+    <div class="auth-card">
+      <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR Logo" class="auth-logo">
+      <h1 class="auth-title">Store CMS Login</h1>
+      <p class="auth-subtitle">1601 Paris Pike • Georgetown, Kentucky</p>
+
+      <div class="auth-error" id="authErrorMsg">
+        Incorrect PIN. Default PIN: ppr2026
+      </div>
+
+      <form id="adminLoginForm">
+        <div class="auth-form-group">
+          <label for="adminPinInput" class="form-label" style="text-align: left; display: block; margin-bottom: 0.35rem;">
+            Security PIN / Password
+          </label>
+          <input type="password" id="adminPinInput" class="form-control" placeholder="Enter store PIN (default: ppr2026)" required autofocus style="text-align: center; letter-spacing: 0.25em; font-size: 1.25rem;">
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-lg" style="width: 100%; margin-top: 0.5rem;">
+          Unlock Store Dashboard
+        </button>
+      </form>
+
+      <div style="margin-top: 1.75rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.25rem;">
+        <a href="index.html" style="font-size: 0.85rem; color: var(--color-gold-light); text-decoration: underline;">
+          ← Return to Public Website
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MAIN ADMIN DASHBOARD LAYOUT
+       ========================================================================= -->
+  <div class="admin-layout">
+    
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <img src="assets/images/ppr-liquor-logo.jpg" alt="PPR LIQUOR" class="admin-brand-img">
+        <div class="admin-brand-text">
+          <h2>PPR LIQUOR</h2>
+          <p>Management CMS</p>
+        </div>
+      </div>
+
+      <nav class="admin-nav">
+        <div class="admin-nav-item active" data-tab="dashboard">
+          <span>📊</span>
+          <span>Dashboard</span>
+        </div>
+        <div class="admin-nav-item" data-tab="products">
+          <span>🥃</span>
+          <span>Products & Stock</span>
+        </div>
+        <div class="admin-nav-item" data-tab="specials">
+          <span>🏷️</span>
+          <span>Specials & Deals</span>
+        </div>
+        <div class="admin-nav-item" data-tab="hours">
+          <span>🕒</span>
+          <span>Hours & Store Info</span>
+        </div>
+        <div class="admin-nav-item" data-tab="inquiries">
+          <span>📥</span>
+          <span>Customer Inquiries</span>
+          <span class="admin-nav-badge" id="navInquiryBadge" style="display:none;">0</span>
+        </div>
+        <div class="admin-nav-item" data-tab="settings">
+          <span>⚙️</span>
+          <span>Settings & Backup</span>
+        </div>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <a href="index.html" target="_blank" class="btn btn-outline btn-sm" style="width: 100%;">
+          ↗ View Live Website
+        </a>
+        <button id="adminLogoutBtn" class="btn btn-outline-white btn-sm" style="width: 100%;">
+          🔒 Lock & Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <div class="admin-top-header">
+        <div class="admin-page-title">
+          <h1 id="adminHeaderTitle">Store Dashboard</h1>
+          <p>Real-time control over products, specials, operating hours, and customer submissions.</p>
+        </div>
+        <div style="display: flex; gap: 0.85rem; align-items: center;">
+          <div class="top-bar-status js-store-status status-open" style="font-size: 0.82rem;">
+            <span class="status-dot"></span>
+            <span>Store Open</span>
+          </div>
+          <a href="index.html" class="btn btn-gold btn-sm" target="_blank">
+            Visit Storefront ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           TAB 1: DASHBOARD OVERVIEW
+           ===================================================================== -->
+      <section class="tab-panel active" id="tab-dashboard">
+        <!-- Metrics -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div>
+              <div class="stat-val" id="statTotalProducts">20</div>
+              <div class="stat-label">Total Catalog Products</div>
+            </div>
+            <div class="stat-icon">📦</div>
+          </div>
+
+          <div class="stat-card">
+            <div>
+              <div class="stat-val" id="statInStock" style="color: #4ade80;">16</div>
+              <div class="stat-label">In-Stock Bottles</div>
+            </div>
+            <div class="stat-icon" style="background: rgba(34,197,94,0.15); color: #4ade80;">✓</div>
+          </div>
+
+          <div class="stat-card">
+            <div>
+              <div class="stat-val" id="statAllocated" style="color: var(--color-gold-light);">4</div>
+              <div class="stat-label">Limited Allocations</div>
+            </div>
+            <div class="stat-icon" style="background: rgba(214,164,59,0.15); color: var(--color-gold);">★</div>
+          </div>
+
+          <div class="stat-card">
+            <div>
+              <div class="stat-val" id="statActiveSpecials">4</div>
+              <div class="stat-label">Active Promotions</div>
+            </div>
+            <div class="stat-icon">🏷️</div>
+          </div>
+
+          <div class="stat-card">
+            <div>
+              <div class="stat-val" id="statUnreadInquiries" style="color: #f87171;">1</div>
+              <div class="stat-label">Unread Inquiries</div>
+            </div>
+            <div class="stat-icon" style="background: rgba(239,68,68,0.15); color: #f87171;">✉️</div>
+          </div>
+        </div>
+
+        <!-- Quick Manager Jump Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+          <div class="admin-card" style="margin-bottom: 0;">
+            <h3 class="admin-card-title" style="margin-bottom: 0.5rem;">🥃 Quick Add Bottle</h3>
+            <p style="color: var(--admin-text-muted); font-size: 0.88rem; margin-bottom: 1.25rem;">
+              Received new bourbon shipments or craft beers? Add them to the browse catalog instantly.
+            </p>
+            <button class="btn btn-gold btn-sm" onclick="document.querySelector('[data-tab=\'products\']').click(); document.getElementById('btnNewProduct').click();">
+              + Add New Bottle
+            </button>
+          </div>
+
+          <div class="admin-card" style="margin-bottom: 0;">
+            <h3 class="admin-card-title" style="margin-bottom: 0.5rem;">🏷️ Launch Special Deal</h3>
+            <p style="color: var(--admin-text-muted); font-size: 0.88rem; margin-bottom: 1.25rem;">
+              Set up weekend pricing, holiday discounts, or local craft ale specials with automatic expiration.
+            </p>
+            <button class="btn btn-outline btn-sm" onclick="document.querySelector('[data-tab=\'specials\']').click(); document.getElementById('btnNewSpecial').click();">
+              + Create Promotion
+            </button>
+          </div>
+
+          <div class="admin-card" style="margin-bottom: 0;">
+            <h3 class="admin-card-title" style="margin-bottom: 0.5rem;">🕒 Operating Hours</h3>
+            <p style="color: var(--admin-text-muted); font-size: 0.88rem; margin-bottom: 1.25rem;">
+              Update holiday schedules, Sunday hours, or Paris Pike contact info anytime.
+            </p>
+            <button class="btn btn-outline-white btn-sm" onclick="document.querySelector('[data-tab=\'hours\']').click();">
+              Edit Store Schedule
+            </button>
+          </div>
+        </div>
+
+        <!-- Store Profile Overview -->
+        <div class="admin-card">
+          <h3 class="admin-card-title" style="margin-bottom: 1rem;">📍 Live Storefront Details</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; font-size: 0.9rem;">
+            <div>
+              <span style="color: var(--admin-text-muted); font-size: 0.78rem; text-transform: uppercase;">Store Name:</span>
+              <div style="color: #fff; font-weight: 600;">PPR LIQUOR</div>
+            </div>
+            <div>
+              <span style="color: var(--admin-text-muted); font-size: 0.78rem; text-transform: uppercase;">Address:</span>
+              <div style="color: #fff; font-weight: 600;">1601 Paris Pike, Georgetown, KY 40324</div>
+            </div>
+            <div>
+              <span style="color: var(--admin-text-muted); font-size: 0.78rem; text-transform: uppercase;">Phone:</span>
+              <div style="color: var(--color-gold-light); font-weight: 600;">(502) 370-4392</div>
+            </div>
+            <div>
+              <span style="color: var(--admin-text-muted); font-size: 0.78rem; text-transform: uppercase;">Email:</span>
+              <div style="color: var(--color-gold-light); font-weight: 600;">pprliquor@gmail.com</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           TAB 2: PRODUCTS MANAGER
+           ===================================================================== -->
+      <section class="tab-panel" id="tab-products">
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <div>
+              <h2 class="admin-card-title">In-Store Product Inventory</h2>
+              <p style="color: var(--admin-text-muted); font-size: 0.85rem;">
+                Manage verified bottles, brands, categories, proof, and stock status.
+              </p>
+            </div>
+            <button id="btnNewProduct" class="btn btn-gold btn-sm">+ Add New Product</button>
+          </div>
+
+          <!-- Table Controls -->
+          <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+            <input type="text" id="adminProductSearch" class="form-control" placeholder="Search bottle name or brand..." style="max-width: 320px; font-size: 0.88rem;">
+            <select id="adminProductCatFilter" class="form-control" style="max-width: 240px; font-size: 0.88rem;">
+              <option value="all">All Categories</option>
+              <option value="Kentucky Bourbon">Kentucky Bourbon</option>
+              <option value="Whiskey & Scotch">Whiskey & Scotch</option>
+              <option value="Tequila">Tequila</option>
+              <option value="Vodka">Vodka</option>
+              <option value="Wine">Wine</option>
+              <option value="Champagne/Sparkling">Champagne</option>
+              <option value="Beer">Beer</option>
+              <option value="Ready-to-Drink/Cocktails">RTD Cocktails</option>
+            </select>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Bottle</th>
+                  <th>Product & Brand</th>
+                  <th>Category</th>
+                  <th>Size</th>
+                  <th>Price</th>
+                  <th>Status (Click to toggle)</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminProductsTbody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           TAB 3: SPECIALS & PROMOTIONS MANAGER
+           ===================================================================== -->
+      <section class="tab-panel" id="tab-specials">
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <div>
+              <h2 class="admin-card-title">Promotions & Weekly Specials</h2>
+              <p style="color: var(--admin-text-muted); font-size: 0.85rem;">
+                Control the homepage specials banner and the dedicated specials page.
+              </p>
+            </div>
+            <button id="btnNewSpecial" class="btn btn-gold btn-sm">+ Add New Promotion</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Title & Badge</th>
+                  <th>Target Product</th>
+                  <th>Deal Price / Terms</th>
+                  <th>Valid Window</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminSpecialsTbody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           TAB 4: HOURS & STORE INFO
+           ===================================================================== -->
+      <section class="tab-panel" id="tab-hours">
+        <div class="admin-card">
+          <h2 class="admin-card-title" style="margin-bottom: 1.5rem;">Business Information & Schedule</h2>
+
+          <form id="adminStoreInfoForm">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+              <div class="form-group">
+                <label class="form-label">Phone Number (Tap-to-call)</label>
+                <input type="text" id="storePhoneInput" class="form-control" value="(502) 370-4392" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Store Email</label>
+                <input type="email" id="storeEmailInput" class="form-control" value="pprliquor@gmail.com" required>
+              </div>
+
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">Full Street Address</label>
+                <input type="text" id="storeAddressInput" class="form-control" value="1601 Paris Pike, Georgetown, Kentucky 40324" required>
+              </div>
+
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">Top Banner Marquee Announcement</label>
+                <input type="text" id="storeAnnounceInput" class="form-control" placeholder="Announcement shown across the top of all pages...">
+              </div>
+            </div>
+
+            <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: #fff; margin-bottom: 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+              Weekly Store Hours
+            </h3>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+              <div style="background: rgba(5,20,44,0.6); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--admin-card-border);">
+                <strong style="color: var(--color-gold-light); display: block; margin-bottom: 0.5rem;">Sunday</strong>
+                <div style="display: flex; gap: 0.5rem;">
+                  <input type="text" id="hours_sunday_open" class="form-control" value="10:00 AM">
+                  <input type="text" id="hours_sunday_close" class="form-control" value="10:00 PM">
+                </div>
+              </div>
+
+              <div style="background: rgba(5,20,44,0.6); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--admin-card-border);">
+                <strong style="color: var(--color-gold-light); display: block; margin-bottom: 0.5rem;">Monday</strong>
+                <div style="display: flex; gap: 0.5rem;">
+                  <input type="text" id="hours_monday_open" class="form-control" value="9:00 AM">
+                  <input type="text" id="hours_monday_close" class="form-control" value="11:00 PM">
+                </div>
+              </div>
+
+              <div style="background: rgba(5,20,44,0.6); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--admin-card-border);">
+                <strong style="color: var(--color-gold-light); display: block; margin-bottom: 0.5rem;">Tuesday</strong>
+                <div style="display: flex; gap: 0.5rem;">
+                  <input type="text" id="hours_tuesday_open" class="form-control" value="9:00 AM">
+                  <input type="text" id="hours_tuesday_close" class="form-control" value="11:00 PM">
+                </div>
+              </div>
+
+              <div style="background: rgba(5,20,44,0.6); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--admin-card-border);">
+                <strong style="color: var(--color-gold-light); display: block; margin-bottom: 0.5rem;">Wednesday</strong>
+                <div style="display: flex; gap: 0.5rem;">
+                  <input type="text" id="hours_wednesday_open" class="form-control" value="9:00 AM">
+                  <input type="text" id="hours_wednesday_close" class="form-control" value="11:00 PM">
+                </div>
+              </div>
+
+              <div style="background: rgba(5,20,44,0.6); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--admin-card-border);">
+                <strong style="color: var(--color-gold-light); display: block; margin-bottom: 0.5rem;">Thursday</strong>
+                <div style="display: flex; gap: 0.5rem;">
+                  <input type="text" id="hours_thursday_open" class="form-control" value="9:00 AM">
+                  <input type="text" id="hours_thursday_close" class="form-control" value="12:00 AM">
+                </div>
+              </div>
+
+              <div style="background: rgba(5,20,44,0.6); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--admin-card-border);">
+                <strong style="color: var(--color-gold-light); display: block; margin-bottom: 0.5rem;">Friday</strong>
+                <div style="display: flex; gap: 0.5rem;">
+                  <input type="text" id="hours_friday_open" class="form-control" value="9:00 AM">
+                  <input type="text" id="hours_friday_close" class="form-control" value="12:00 AM">
+                </div>
+              </div>
+
+              <div style="background: rgba(5,20,44,0.6); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--admin-card-border);">
+                <strong style="color: var(--color-gold-light); display: block; margin-bottom: 0.5rem;">Saturday</strong>
+                <div style="display: flex; gap: 0.5rem;">
+                  <input type="text" id="hours_saturday_open" class="form-control" value="9:00 AM">
+                  <input type="text" id="hours_saturday_close" class="form-control" value="12:00 AM">
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-gold btn-lg">
+              Save Store Info & Hours
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           TAB 5: CUSTOMER INQUIRIES INBOX
+           ===================================================================== -->
+      <section class="tab-panel" id="tab-inquiries">
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <div>
+              <h2 class="admin-card-title">Customer Messages & Bottle Requests</h2>
+              <p style="color: var(--admin-text-muted); font-size: 0.85rem;">
+                Submissions sent by customers through the website contact forms.
+              </p>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Date & Sender</th>
+                  <th>Contact Info</th>
+                  <th>Topic</th>
+                  <th>Message Preview</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminInquiriesTbody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           TAB 6: SETTINGS, SECURITY & BACKUP
+           ===================================================================== -->
+      <section class="tab-panel" id="tab-settings">
+        
+        <!-- Change Security PIN -->
+        <div class="admin-card">
+          <h2 class="admin-card-title" style="margin-bottom: 1rem;">Admin Security PIN</h2>
+          <p style="color: var(--admin-text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">
+            Update the PIN code used to access this management dashboard (Default PIN is <code>ppr2026</code>).
+          </p>
+
+          <form id="changePinForm" style="max-width: 440px;">
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label class="form-label">Current PIN</label>
+              <input type="password" id="currentPinInput" class="form-control" placeholder="Enter current PIN" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+              <label class="form-label">New PIN (Minimum 4 characters)</label>
+              <input type="password" id="newPinInput" class="form-control" placeholder="Enter new PIN" required>
+            </div>
+            <button type="submit" class="btn btn-gold btn-sm">Update Security PIN</button>
+          </form>
+        </div>
+
+        <!-- Data Backup & Restore -->
+        <div class="admin-card">
+          <h2 class="admin-card-title" style="margin-bottom: 1rem;">Data Backup & Recovery</h2>
+          <p style="color: var(--admin-text-muted); font-size: 0.88rem; margin-bottom: 1.5rem; line-height: 1.6;">
+            Download a complete JSON snapshot of all your catalog products, weekly specials, store hours, and customer inquiry archives for safekeeping.
+          </p>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+            <button id="btnExportBackup" class="btn btn-gold">
+              📥 Export Database to JSON File
+            </button>
+            <label class="btn btn-outline" style="cursor: pointer;">
+              📤 Restore Backup JSON
+              <input type="file" id="importBackupFile" accept=".json" style="display: none;">
+            </label>
+          </div>
+
+          <div style="border-top: 1px solid rgba(239,68,68,0.25); padding-top: 1.5rem;">
+            <h4 style="color: #f87171; font-family: var(--font-serif); font-size: 1.15rem; margin-bottom: 0.5rem;">Factory Reset</h4>
+            <p style="color: var(--admin-text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
+              Reset all catalog items, specials, and store hours to initial Georgetown, KY default dataset.
+            </p>
+            <button id="btnResetDefaults" class="btn btn-burgundy btn-sm">
+              Reset to Factory Demo Catalog
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- =========================================================================
+       ADD / EDIT PRODUCT MODAL
+       ========================================================================= -->
+  <div class="admin-modal-overlay" id="productFormModal">
+    <div class="admin-modal-card">
+      <div class="admin-modal-head">
+        <h3 id="productModalTitle" style="font-family: var(--font-serif); font-size: 1.45rem; color: #fff;">Add New Product</h3>
+        <button id="closeProductModal" style="background: none; border: none; font-size: 1.8rem; color: #fff; cursor: pointer;">&times;</button>
+      </div>
+
+      <form id="adminProductForm">
+        <input type="hidden" id="prodIdField">
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
+          <div class="form-group">
+            <label class="form-label">Product Name *</label>
+            <input type="text" id="prodName" class="form-control" placeholder="e.g. Buffalo Trace Bourbon" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Brand / Distillery *</label>
+            <input type="text" id="prodBrand" class="form-control" placeholder="e.g. Buffalo Trace" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select id="prodCategory" class="form-control" required>
+              <option value="Kentucky Bourbon">Kentucky Bourbon</option>
+              <option value="Whiskey & Scotch">Whiskey & Scotch</option>
+              <option value="Tequila">Tequila</option>
+              <option value="Vodka">Vodka</option>
+              <option value="Wine">Wine</option>
+              <option value="Champagne/Sparkling">Champagne/Sparkling</option>
+              <option value="Beer">Beer</option>
+              <option value="Ready-to-Drink/Cocktails">Ready-to-Drink/Cocktails</option>
+              <option value="Rum">Rum</option>
+              <option value="Gin">Gin</option>
+              <option value="Brandy/Cognac">Brandy/Cognac</option>
+              <option value="Mixers & Nonalcoholic">Mixers & Nonalcoholic</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Bottle Size *</label>
+            <input type="text" id="prodSize" class="form-control" placeholder="e.g. 750ml, 1.75L, 6-Pack" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Proof / ABV %</label>
+            <input type="text" id="prodProof" class="form-control" placeholder="e.g. 90 Proof (45% ABV)">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Store Price</label>
+            <input type="text" id="prodPrice" class="form-control" placeholder="e.g. $29.99 or Call for Price">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Availability Status</label>
+            <select id="prodStatus" class="form-control">
+              <option value="In Stock">In Stock</option>
+              <option value="Limited Allocation">Limited Allocation</option>
+              <option value="Out of Stock">Out of Stock</option>
+              <option value="Coming Soon">Coming Soon</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Image Path / URL</label>
+            <input type="text" id="prodImage" class="form-control" placeholder="assets/images/bourbon-bottle.jpg">
+          </div>
+
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label">Tasting Notes (Comma-separated tags)</label>
+            <input type="text" id="prodTastingNotes" class="form-control" placeholder="e.g. Vanilla, Oak Spice, Brown Sugar">
+          </div>
+
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label">Product Description</label>
+            <textarea id="prodDescription" class="form-control" rows="3" placeholder="Distillery notes, heritage, and tasting profile..."></textarea>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-outline" onclick="document.getElementById('productFormModal').classList.remove('active')">Cancel</button>
+          <button type="submit" class="btn btn-gold">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       ADD / EDIT SPECIAL MODAL
+       ========================================================================= -->
+  <div class="admin-modal-overlay" id="specialFormModal">
+    <div class="admin-modal-card">
+      <div class="admin-modal-head">
+        <h3 id="specialModalTitle" style="font-family: var(--font-serif); font-size: 1.45rem; color: #fff;">Create New Special</h3>
+        <button id="closeSpecialModal" style="background: none; border: none; font-size: 1.8rem; color: #fff; cursor: pointer;">&times;</button>
+      </div>
+
+      <form id="adminSpecialForm">
+        <input type="hidden" id="specialIdField">
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label">Promotion Headline *</label>
+            <input type="text" id="specialTitle" class="form-control" placeholder="e.g. Kentucky Bourbon Spotlight" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Featured Product / Brand *</label>
+            <input type="text" id="specialProduct" class="form-control" placeholder="e.g. Buffalo Trace 750ml" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Badge Label</label>
+            <input type="text" id="specialBadge" class="form-control" placeholder="e.g. Weekend Deal, Staff Pick" value="Special Offer">
+          </div>
+
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label">Deal Offer / Price Banner *</label>
+            <input type="text" id="specialDealText" class="form-control" placeholder="e.g. Neighborhood Special: $29.99" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Start Date</label>
+            <input type="date" id="specialStartDate" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">End Date (Auto-Expires)</label>
+            <input type="date" id="specialEndDate" class="form-control">
+          </div>
+
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label">Subtitle / Description</label>
+            <input type="text" id="specialSubtitle" class="form-control" placeholder="e.g. In-store walk-in special">
+          </div>
+
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label">Terms & Conditions</label>
+            <textarea id="specialTerms" class="form-control" rows="2" placeholder="e.g. While supplies last. Limit 1 per customer."></textarea>
+          </div>
+
+          <div class="form-group" style="grid-column: span 2;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; color: #fff; cursor: pointer;">
+              <input type="checkbox" id="specialActive" checked style="width: 18px; height: 18px;">
+              <span>Active (Visible on Website)</span>
+            </label>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-outline" onclick="document.getElementById('specialFormModal').classList.remove('active')">Cancel</button>
+          <button type="submit" class="btn btn-gold">Save Promotion</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
